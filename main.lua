@@ -1,5 +1,18 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath()..";lib/?.lua;lib/;")
 DEBUG = false
+CONSTANTS = nil
+COMPONENTS = nil
+ENTITIES = nil
+SYSTEMS = nil
+
+-- Libraries
+ECS = nil
+Component = nil
+Entity = nil
+Instance = nil
+System = nil
+Timer = nil
+Camera = nil
 
 function love.load()
 end
