@@ -1,5 +1,5 @@
 local PATH = (...):gsub("%.init$", "")
 
 return {
-    -- world = require(PATH .. ".world"),
+    world = require(PATH .. ".world"),
 }
