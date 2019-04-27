@@ -1,24 +1,33 @@
 local stageManager = System({})
 
 function stageManager:init()
-    self.current_stage = nil
-    self:loadStage("resource/stage.lua")
+    self.stage = nil
+    self:loadStage("resource/test.lua")
 end
 
 function stageManager:loadStage(path)
-    self.current_stage = STI(path)
+    self.stage = STI(path)
 
     print("Loaded stage successfully")
 end
 
 function stageManager:draw()
-    if self.current_stage then
+    if self.stage then
         love.graphics.push()
         -- love.graphics.translate( // TODO: this?
         --     WORLD_OFFSET.x + (self.cellWidth / self.tileWidth + 28),
         --     WORLD_OFFSET.y + (self.cellHeight / self.tileHeight + 28)
         -- ) -- fuck this & fuck u
-        love.graphics.scale(self.cellWidth / self.tileWidth, self.cellHeight / self.tileHeight)
+        love.graphics.scale(
+            _constants.CELL_WIDTH / _constants.TILE_WIDTH,
+            _constants.CELL_HEIGHT / _constants.TILE_HEIGHT
+        )
+        if self.stage.layers["Background"] then
+            self.stage.layers["Background"]:draw()
+        end
+        if self.stage.layers["World"] then
+            self.stage.layers["World"]:draw()
+        end
         if self.stage.layers["Foreground"] then
             self.stage.layers["Foreground"]:draw()
         end
@@ -28,8 +37,8 @@ function stageManager:draw()
 end
 
 function stageManager:update(dt)
-    if self.current_stage then
-        self.current_stage:update(dt)
+    if self.stage then
+        self.stage:update(dt)
     end
 end
 

@@ -1,6 +1,6 @@
 local world = Instance()
 
-local stageManager = SYSTEMS.stageManager()
+local stageManager = _systems.stageManager()
 
 -- ADD SYSTEMS
 

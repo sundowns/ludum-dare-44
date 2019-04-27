@@ -1,9 +1,10 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-DEBUG = false
-CONSTANTS = nil
-COMPONENTS = nil
-ENTITIES = nil
-SYSTEMS = nil
+_debug = false
+_constants = nil
+_components = nil
+_entities = nil
+_instances = nil
+_systems = nil
 
 -- Libraries
 ECS = nil
@@ -16,7 +17,7 @@ Camera = nil
 
 function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest", 1)
-    CONSTANTS = require("src.constants")
+    _constants = require("src.constants")
     Util = require("lib.util")
     assets = require("lib.cargo").init("asset")
     STI = require("lib.sti")
@@ -33,19 +34,19 @@ function love.load()
     Vector = require("lib.vector")
     Timer = require("lib.timer")
 
-    COMPONENTS = require("src.component")
-    ENTITIES = require("src.entity")
-    SYSTEMS = require("src.system")
-    INSTANCES = require("src.instance")
+    _components = require("src.component")
+    _entities = require("src.entity")
+    _systems = require("src.system")
+    _instances = require("src.instance")
 end
 
 function love.update(dt)
-    INSTANCES.world:emit("update", dt)
+    _instances.world:emit("update", dt)
     Timer.update(dt)
 end
 
 function love.draw()
-    INSTANCES.world:emit("draw")
+    _instances.world:emit("draw")
     local x, y = 10, 60
     function bump(y, delta)
         return y + delta
@@ -62,16 +63,16 @@ function love.draw()
 end
 
 function love.keyreleased(key)
-    INSTANCES.world:emit("keyreleased", key)
+    _instances.world:emit("keyreleased", key)
 end
 
 function love.keypressed(key)
     if key == "f1" then
-        DEBUG = not DEBUG
+        _debug = not _debug
     elseif key == "escape" then
         love.event.quit()
     elseif key == "space" then
         love.event.quit("restart")
     end
-    INSTANCES.world:emit("keypressed", key)
+    _instances.world:emit("keypressed", key)
 end
