@@ -9,7 +9,7 @@ function gravity:update(dt)
         local transform = e:get(_components.transform)
         local gravity = e:get(_components.gravity)
 
-        transform.velocity.y = transform.velocity.y + (gravity.strength * dt)
+        transform.pos.y = transform.pos.y + (gravity.strength * dt)
     end
 end
 

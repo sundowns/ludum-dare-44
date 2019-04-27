@@ -8,6 +8,7 @@ local gravity = _systems.gravity()
 local jumping = _systems.jumping()
 local physics = _systems.physics()
 local camera = _systems.camera()
+local state_manager = _systems.state_manager()
 
 -- ADD SYSTEMS
 
@@ -35,6 +36,8 @@ world:addSystem(camera, "update")
 world:addSystem(camera, "attach")
 world:addSystem(camera, "detach")
 
+world:addSystem(state_manager, "update")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(stage_manager, "stageLoaded")
@@ -53,6 +56,7 @@ function world:enableUpdates()
     world:enableSystem(jumping, "update")
     world:enableSystem(physics, "update")
     world:enableSystem(camera, "update")
+    world:enableSystem(state_manager, "update")
 end
 
 function world:disableUpdates()
@@ -63,6 +67,7 @@ function world:disableUpdates()
     world:disableSystem(jumping, "update")
     world:disableSystem(physics, "update")
     world:disableSystem(camera, "update")
+    world:disableSystem(state_manager, "update")
 end
 
 world:enableUpdates()

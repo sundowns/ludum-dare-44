@@ -9,5 +9,6 @@ return {
     jumping = require(PATH .. ".jumping"),
     gravity = require(PATH .. ".gravity"),
     physics = require(PATH .. ".physics"),
-    camera = require(PATH .. ".camera")
+    camera = require(PATH .. ".camera"),
+    state_manager = require(PATH .. ".state_manager")
 }

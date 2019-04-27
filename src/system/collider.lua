@@ -5,6 +5,7 @@ local collider =
         _components.collides,
         _components.transform,
         _components.jump,
+        _components.player_state,
         "JUMPER"
     }
 )
@@ -38,33 +39,29 @@ function collider:update(dt)
         local jump = e:get(_components.jump)
         local transform = e:get(_components.transform)
         local collides = e:get(_components.collides)
-        if jump.is_jumping then
+        local state = e:get(_components.player_state).state
+        if state.state == "jump" then
             -- query to see if player is on the ground
             local items, len =
-                self.collision_world:queryRect(transform.pos.x, transform.pos.y + collides.height, collides.width, 10)
+                self.collision_world:queryRect(
+                transform.pos.x,
+                transform.pos.y + collides.height,
+                collides.width * 0.8,
+                1
+            )
             if len > 0 then
-                print("finished jumping (replace this with state machine)")
-                jump.is_jumping = false -- TODO: state machine
+                state:setState("default")
             else
                 -- query to see if player has bumped their head
                 local items2, len2 =
-                    self.collision_world:queryRect(transform.pos.x, transform.pos.y - 5, collides.width, 5)
+                    self.collision_world:queryRect(
+                    transform.pos.x + collides.width * 0.2,
+                    transform.pos.y - 5,
+                    collides.width * 0.6,
+                    1
+                )
                 if len2 > 0 then
-                    transform.velocity = Vector(0, 0)
-                else
-                    -- query to see if player has bumped to the left or right
-                    local items3, len3 =
-                        self.collision_world:queryRect(transform.pos.x - 5, transform.pos.y, 5, collides.height)
-                    local items4, len4 =
-                        self.collision_world:queryRect(
-                        transform.pos.x + collides.width,
-                        transform.pos.y,
-                        5,
-                        collides.height
-                    )
-                    if len3 > 0 or len4 > 0 then
-                        transform.velocity.x = 0
-                    end
+                    jump:bump_head()
                 end
             end
         end

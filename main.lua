@@ -37,6 +37,7 @@ function love.load()
     Timer = require("lib.timer")
     Bump = require("lib.bump")
     Camera = require("lib.camera")
+    Behavior = require("lib.behavior")
 
     _components = require("src.component")
     _entities = require("src.entity")

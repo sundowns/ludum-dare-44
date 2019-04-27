@@ -9,7 +9,6 @@ function physics:update(dt)
         if e:has(_components.collides) then
             self:getInstance():emit("evaluateCollidable", e)
         end
-        -- self:getInstance():emit
     end
 end
 

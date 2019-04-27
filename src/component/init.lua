@@ -7,5 +7,7 @@ return {
     walk = require(PATH .. ".walk"),
     gravity = require(PATH .. ".gravity"),
     jump = require(PATH .. ".jump"),
-    camera = require(PATH .. ".camera")
+    camera = require(PATH .. ".camera"),
+    player_state = require(PATH .. ".player_state"),
+    air_control = require(PATH .. ".air_control")
 }

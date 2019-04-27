@@ -23,6 +23,12 @@ return function(x, y)
         {
             jump = "space"
         }
-    ):give(_components.gravity, _constants.GRAVITY):give(_components.camera):apply()
+    ):give(
+        _components.air_control,
+        {
+            left = "a",
+            right = "d"
+        }
+    ):give(_components.gravity, _constants.GRAVITY):give(_components.camera):give(_components.player_state):apply()
     return player
 end
