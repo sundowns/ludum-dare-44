@@ -58,13 +58,9 @@ function love.draw()
     end
     love.graphics.print("[CONTROLS]", x, y)
     y = bump(y, 40)
-    love.graphics.print("[w] [up]:        Up", x, y)
+    love.graphics.print("[a] Left", x, y)
     y = bump(y, 25)
-    love.graphics.print("[s] [down]:   Down", x, y)
-    y = bump(y, 25)
-    love.graphics.print("[a] [left]:      Left", x, y)
-    y = bump(y, 25)
-    love.graphics.print("[d] [right]:    Right", x, y)
+    love.graphics.print("[d] Right", x, y)
 end
 
 function love.keyreleased(key)
@@ -76,7 +72,7 @@ function love.keypressed(key)
         _debug = not _debug
     elseif key == "escape" then
         love.event.quit()
-    elseif key == "space" then
+    elseif key == "return" then
         love.event.quit("restart")
     end
     _instances.world:emit("keypressed", key)
