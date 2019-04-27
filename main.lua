@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = false
+_debug = true
 _constants = nil
 _components = nil
 _entities = nil
@@ -14,6 +14,8 @@ Instance = nil
 System = nil
 Timer = nil
 Camera = nil
+Bump = nil
+Util = nil
 
 function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest", 1)
@@ -33,11 +35,14 @@ function love.load()
     System = require("lib.concord.system")
     Vector = require("lib.vector")
     Timer = require("lib.timer")
+    Bump = require("lib.bump")
 
     _components = require("src.component")
     _entities = require("src.entity")
     _systems = require("src.system")
     _instances = require("src.instance")
+
+    _instances.world:emit("stageLoaded", "resource/test.lua")
 end
 
 function love.update(dt)

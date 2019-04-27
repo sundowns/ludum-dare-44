@@ -1,5 +1,7 @@
 local PATH = (...):gsub("%.init$", "")
 
 return {
-    stageManager = require(PATH .. ".stageManager")
+    collider = require(PATH .. ".collider"),
+    stage_manager = require(PATH .. ".stage_manager"),
+    sprite_renderer = require(PATH .. ".sprite_renderer")
 }

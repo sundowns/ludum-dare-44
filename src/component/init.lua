@@ -1,5 +1,7 @@
 local PATH = (...):gsub("%.init$", "")
 
 return {
-    -- transform = require(PATH .. ".transform"),
+    collides = require(PATH .. ".collides"),
+    sprite = require(PATH .. ".sprite"),
+    transform = require(PATH .. ".transform")
 }
