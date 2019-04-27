@@ -14,14 +14,7 @@ end
 function stageManager:draw()
     if self.stage then
         love.graphics.push()
-        -- love.graphics.translate( // TODO: this?
-        --     WORLD_OFFSET.x + (self.cellWidth / self.tileWidth + 28),
-        --     WORLD_OFFSET.y + (self.cellHeight / self.tileHeight + 28)
-        -- ) -- fuck this & fuck u
-        love.graphics.scale(
-            _constants.CELL_WIDTH / _constants.TILE_WIDTH,
-            _constants.CELL_HEIGHT / _constants.TILE_HEIGHT
-        )
+        love.graphics.scale(1.25, 1.25) -- incredible hack! probably calculate this if ur a nerd
         if self.stage.layers["Background"] then
             self.stage.layers["Background"]:draw()
         end
