@@ -14,17 +14,17 @@ function stage_manager:stageLoaded(path)
     for y, row in ipairs(collidable_tile_data.tiles) do
         for x, cell in pairs(row) do
             -- Subtract 1 to index at 0
-            _instances.world:addEntity(_entities.tile(x - 1, y - 1))
+            self:getInstance():addEntity(_entities.tile(x - 1, y - 1))
         end
     end
+
+    self:getInstance():addEntity(_entities.player(1, 15))
 end
 
 function stage_manager:draw()
     if self.stage then
         love.graphics.push()
-        -- TODO: scale the world (also scale the hitbox calcs elsewhere)
-        -- local ratio = love.graphics.getHeight()
-        -- love.graphics.scale(ratio, ratio)
+        love.graphics.scale(_constants.FORBIDDEN_HACK_RATIO, _constants.FORBIDDEN_HACK_RATIO)
         if self.stage.layers["Background"] then
             self.stage.layers["Background"]:draw()
         end

@@ -1,6 +1,6 @@
--- x and y are grid indices (integers)
+-- x and y are grid coordinates
 return function(x, y)
-    local tile =
+    local player =
         Entity():give(
         _components.transform,
         Vector(
@@ -11,7 +11,13 @@ return function(x, y)
     ):give(
         _components.collides,
         _constants.CELL_WIDTH * _constants.FORBIDDEN_HACK_RATIO,
-        _constants.CELL_HEIGHT * _constants.FORBIDDEN_HACK_RATIO
+        _constants.CELL_HEIGHT * 2 * _constants.FORBIDDEN_HACK_RATIO
+    ):give(
+        _components.walk,
+        {
+            left = "a",
+            right = "d"
+        }
     ):apply()
-    return tile
+    return player
 end

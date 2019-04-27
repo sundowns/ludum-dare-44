@@ -1,4 +1,5 @@
 return {
     CELL_HEIGHT = 32,
-    CELL_WIDTH = 32
+    CELL_WIDTH = 32,
+    FORBIDDEN_HACK_RATIO = 1.25
 }
