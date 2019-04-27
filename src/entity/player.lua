@@ -23,6 +23,6 @@ return function(x, y)
         {
             jump = "space"
         }
-    ):give(_components.gravity, _constants.GRAVITY):apply()
+    ):give(_components.gravity, _constants.GRAVITY):give(_components.camera):apply()
     return player
 end

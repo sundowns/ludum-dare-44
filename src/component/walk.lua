@@ -17,7 +17,6 @@ function walk:move(modifier)
 end
 
 function walk:applyFriction(dt)
-    print(self.x_velocity)
     if self.x_velocity > 0 then
         self.x_velocity = self.x_velocity - (self.friction * dt)
     elseif self.x_velocity < 0 then

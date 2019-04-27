@@ -2,13 +2,16 @@ local jump =
     Component(
     function(e, keys)
         assert(keys.jump, "missing jump key for jump component")
-        Util.t.print(keys)
         e.keys = keys
         e.jump_velocity = _constants.JUMP_ACCEL
-        e.fall_speed = _constants.FALL_SPEED
         e.is_jumping = false -- TODO: replace with player behaviour component FSM?
-        -- e.timer = Timer.after()
+        e.timer = nil
+        e.jump_time = _constants.JUMP_TWEEN_TIME
     end
 )
+
+function jump:jump()
+    self.is_jumping = true
+end
 
 return jump

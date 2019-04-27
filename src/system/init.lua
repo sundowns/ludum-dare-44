@@ -8,5 +8,6 @@ return {
     walking = require(PATH .. ".walking"),
     jumping = require(PATH .. ".jumping"),
     gravity = require(PATH .. ".gravity"),
-    physics = require(PATH .. ".physics")
+    physics = require(PATH .. ".physics"),
+    camera = require(PATH .. ".camera")
 }

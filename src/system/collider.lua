@@ -43,22 +43,27 @@ function collider:update(dt)
             local items, len =
                 self.collision_world:queryRect(transform.pos.x, transform.pos.y + collides.height, collides.width, 10)
             if len > 0 then
-                print("finished jumping")
-                jump.is_jumping = false
+                print("finished jumping (replace this with state machine)")
+                jump.is_jumping = false -- TODO: state machine
             else
                 -- query to see if player has bumped their head
                 local items2, len2 =
                     self.collision_world:queryRect(transform.pos.x, transform.pos.y - 5, collides.width, 5)
                 if len2 > 0 then
-                    transform.velocity.y = 0
+                    transform.velocity = Vector(0, 0)
                 else
                     -- query to see if player has bumped to the left or right
                     local items3, len3 =
-                        self.collision_world:queryRect(transform.pos.x, transform.pos.y - 5, collides.width, 5)
+                        self.collision_world:queryRect(transform.pos.x - 5, transform.pos.y, 5, collides.height)
                     local items4, len4 =
-                        self.collision_world:queryRect(transform.pos.x, transform.pos.y - 5, collides.width, 5)
+                        self.collision_world:queryRect(
+                        transform.pos.x + collides.width,
+                        transform.pos.y,
+                        5,
+                        collides.height
+                    )
                     if len3 > 0 or len4 > 0 then
-                        transform.velocity.y = 0
+                        transform.velocity.x = 0
                     end
                 end
             end

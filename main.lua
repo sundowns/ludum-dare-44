@@ -36,6 +36,7 @@ function love.load()
     Vector = require("lib.vector")
     Timer = require("lib.timer")
     Bump = require("lib.bump")
+    Camera = require("lib.camera")
 
     _components = require("src.component")
     _entities = require("src.entity")
@@ -51,7 +52,9 @@ function love.update(dt)
 end
 
 function love.draw()
+    _instances.world:emit("attach")
     _instances.world:emit("draw")
+    _instances.world:emit("detach")
     local x, y = 10, 60
     function bump(y, delta)
         return y + delta

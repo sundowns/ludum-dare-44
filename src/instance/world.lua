@@ -7,6 +7,7 @@ local walking = _systems.walking()
 local gravity = _systems.gravity()
 local jumping = _systems.jumping()
 local physics = _systems.physics()
+local camera = _systems.camera()
 
 -- ADD SYSTEMS
 
@@ -30,12 +31,19 @@ world:addSystem(jumping, "update")
 
 world:addSystem(physics, "update")
 
+world:addSystem(camera, "update")
+world:addSystem(camera, "attach")
+world:addSystem(camera, "detach")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(stage_manager, "stageLoaded")
 
 world:enableSystem(collider, "draw")
 world:enableSystem(collider, "evaluateCollidable")
+
+world:enableSystem(camera, "attach")
+world:enableSystem(camera, "detach")
 
 function world:enableUpdates()
     world:enableSystem(stage_manager, "update")
@@ -44,6 +52,7 @@ function world:enableUpdates()
     world:enableSystem(gravity, "update")
     world:enableSystem(jumping, "update")
     world:enableSystem(physics, "update")
+    world:enableSystem(camera, "update")
 end
 
 function world:disableUpdates()
@@ -53,6 +62,7 @@ function world:disableUpdates()
     world:disableSystem(gravity, "update")
     world:disableSystem(jumping, "update")
     world:disableSystem(physics, "update")
+    world:disableSystem(camera, "update")
 end
 
 world:enableUpdates()
