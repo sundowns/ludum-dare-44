@@ -7,7 +7,8 @@ function jumping:update(dt)
         local transform = e:get(_components.transform)
 
         if love.keyboard.isDown(jump.keys.jump) and not jump.is_jumping then
-            transform.vel.y = -1 * jump.jump_velocity
+            transform.pos.y = transform.pos.y - 10
+            transform.velocity.y = -1 * jump.jump_velocity
             jump.is_jumping = true
         end
     end

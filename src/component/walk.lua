@@ -23,6 +23,10 @@ function walk:applyFriction(dt)
     elseif self.x_velocity < 0 then
         self.x_velocity = self.x_velocity + (self.friction * dt)
     end
+
+    if math.abs(self.x_velocity) < 5 then
+        self.x_velocity = 0
+    end
 end
 
 return walk

@@ -9,13 +9,7 @@ function gravity:update(dt)
         local transform = e:get(_components.transform)
         local gravity = e:get(_components.gravity)
 
-        -- TODO: only run below if the target is aerial
-        transform.vel.y = transform.vel.y + (gravity.strength * dt)
-        -- if e:has(_components.collides) then
-        --     self:getInstance():emit("evaluateCollidable", e)
-        -- end
-
-        -- transform.vel.y = transform.vel.y + (gravity.strength * dt)
+        transform.velocity.y = transform.velocity.y + (gravity.strength * dt)
     end
 end
 

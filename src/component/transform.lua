@@ -4,7 +4,7 @@ local transform =
         assert(position.x and position.y, "Transform component received a non-vector position on creation")
         assert(velocity.x and velocity.y, "Transform component received a non-vector velocity on creation")
         e.pos = position
-        e.vel = velocity
+        e.velocity = velocity
     end
 )
 
@@ -19,7 +19,7 @@ end
 
 function transform:setVelocity(velocity)
     assert(velocity.x and velocity.y, "Transform component received a non-vector velocity when setting velocity")
-    self.vel = velocity
+    self.velocity = velocity
 end
 
 return transform

@@ -5,7 +5,7 @@ function physics:update(dt)
         local e = self.pool:get(i)
         local transform = e:get(_components.transform)
 
-        transform.pos = transform.pos + transform.vel * dt
+        transform.pos = transform.pos + transform.velocity * dt
         if e:has(_components.collides) then
             self:getInstance():emit("evaluateCollidable", e)
         end
