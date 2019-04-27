@@ -1,4 +1,13 @@
-local collider = System({_components.collides, _components.transform})
+local collider =
+    System(
+    {_components.collides, _components.transform, "ALL"},
+    {
+        _components.collides,
+        _components.transform,
+        _components.jump,
+        "JUMPER"
+    }
+)
 
 function collider:init()
     self.collision_world = Bump.newWorld()
@@ -15,13 +24,28 @@ function collider:entityRemoved(e)
 end
 
 function collider:update(dt)
-    for i = 1, self.pool.size do
-        local e = self.pool:get(i)
+    for i = 1, self.ALL.size do
+        local e = self.ALL:get(i)
         local transform = e:get(_components.transform)
         local collides = e:get(_components.collides)
 
         local actualX, actualY, cols, len = self.collision_world:move(collides, transform.pos.x, transform.pos.y)
         transform:setPosition(Vector(actualX, actualY))
+    end
+
+    for i = 1, self.JUMPER.size do
+        local e = self.JUMPER:get(i)
+        local jump = e:get(_components.jump)
+        local position = e:get(_components.transform).pos
+        local collides = e:get(_components.collides)
+        if jump.is_jumping then
+            local items, len =
+                self.collision_world:queryRect(position.x, position.y + collides.height, collides.width, 5)
+            if len > 0 then
+                print("finished jumping")
+                jump.is_jumping = false
+            end
+        end
     end
 end
 
@@ -35,6 +59,13 @@ function collider:draw()
         end
         Util.l.resetColour()
     end
+end
+
+function collider:evaluateCollidable(entity)
+    -- transform:setPosition(Vector(actualX, actualY))
+    local transform = entity:get(_components.transform)
+    local collides = entity:get(_components.collides)
+    local actualX, actualY, cols, len = self.collision_world:move(collides, transform.pos.x, transform.pos.y)
 end
 
 return collider

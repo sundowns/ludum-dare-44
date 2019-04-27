@@ -18,6 +18,11 @@ return function(x, y)
             left = "a",
             right = "d"
         }
-    ):apply()
+    ):give(
+        _components.jump,
+        {
+            jump = "space"
+        }
+    ):give(_components.gravity, _constants.GRAVITY):apply()
     return player
 end

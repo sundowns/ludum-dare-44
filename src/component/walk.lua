@@ -7,8 +7,8 @@ local walk =
         assert(keys.left, "missing left key for run component")
         e.keys = keys
         e.x_velocity = 0
-        e.walk_speed = 200
-        e.friction = 600
+        e.walk_speed = _constants.WALK_SPEED
+        e.friction = _constants.FRICTION
     end
 )
 
@@ -17,6 +17,7 @@ function walk:move(modifier)
 end
 
 function walk:applyFriction(dt)
+    print(self.x_velocity)
     if self.x_velocity > 0 then
         self.x_velocity = self.x_velocity - (self.friction * dt)
     elseif self.x_velocity < 0 then
