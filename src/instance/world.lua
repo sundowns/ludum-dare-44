@@ -10,6 +10,7 @@ local physics = _systems.physics()
 local camera = _systems.camera()
 local state_manager = _systems.state_manager()
 local upgrades = _systems.upgrades()
+local damage = _systems.damage()
 
 -- ADD SYSTEMS
 
@@ -29,7 +30,7 @@ world:addSystem(walking, "update")
 world:addSystem(gravity, "update")
 
 world:addSystem(jumping, "update")
-world:addSystem(jumping, "player_idling")
+world:addSystem(jumping, "playerIdling")
 
 world:addSystem(physics, "update")
 
@@ -44,9 +45,12 @@ world:addSystem(upgrades, "upgradeHovered")
 world:addSystem(upgrades, "update")
 world:addSystem(upgrades, "draw_ui")
 
+world:addSystem(damage, "playerTouchedHazard")
+world:addSystem(damage, "update")
+
 -- ENABLE SYSTEMS
 
-world:enableSystem(jumping, "player_idling")
+world:enableSystem(jumping, "playerIdling")
 
 world:enableSystem(stage_manager, "stageLoaded")
 
@@ -62,6 +66,8 @@ world:enableSystem(upgrades, "acquireUpgrade")
 world:enableSystem(upgrades, "upgradeHovered")
 world:enableSystem(upgrades, "draw_ui")
 
+world:enableSystem(damage, "playerTouchedHazard")
+
 function world:enableUpdates()
     world:enableSystem(stage_manager, "update")
     world:enableSystem(collider, "update")
@@ -73,6 +79,7 @@ function world:enableUpdates()
     world:enableSystem(state_manager, "update")
     world:enableSystem(upgrades, "update")
     world:enableSystem(sprite_renderer, "update")
+    world:enableSystem(damage, "update")
 end
 
 function world:disableUpdates()
@@ -86,6 +93,7 @@ function world:disableUpdates()
     world:disableSystem(state_manager, "update")
     world:disableSystem(upgrades, "update")
     world:disableSystem(sprite_renderer, "update")
+    world:disableSystem(damage, "update")
 end
 
 world:enableUpdates()

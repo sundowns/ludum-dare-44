@@ -79,7 +79,7 @@ function jumping:update(dt)
     end
 end
 
-function jumping:player_idling()
+function jumping:playerIdling()
     for i = 1, self.JUMPERS.size do
         local e = self.JUMPERS:get(i)
         e:get(_components.jump):reset()

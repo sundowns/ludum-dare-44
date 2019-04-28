@@ -11,5 +11,6 @@ return {
     physics = require(PATH .. ".physics"),
     camera = require(PATH .. ".camera"),
     state_manager = require(PATH .. ".state_manager"),
-    upgrades = require(PATH .. ".upgrades")
+    upgrades = require(PATH .. ".upgrades"),
+    damage = require(PATH .. ".damage")
 }

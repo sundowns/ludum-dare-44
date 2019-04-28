@@ -14,5 +14,6 @@ return {
     health = require(PATH .. ".health"),
     direction = require(PATH .. ".direction"),
     goal = require(PATH .. ".goal"),
-    damage = require(PATH .. ".damage")
+    damage = require(PATH .. ".damage"),
+    invulnerability = require(PATH .. ".invulnerability")
 }

@@ -91,10 +91,10 @@ function collider:update(dt)
         )
 
         if len > 0 then
-            print("ouchey :(!")
-        -- TODO: have the player take damage (& evaluate death)
-        -- TODO: give player temp invulnerability
-        -- self:getInstance():emit("playerTouchedHazard", damage)
+            local damage = items[len]
+            -- TODO: have the player take damage (& evaluate death)
+            -- TODO: give player temp invulnerability
+            self:getInstance():emit("playerTouchedHazard", damage.value)
         end
     end
 

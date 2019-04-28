@@ -3,7 +3,7 @@ local states = {
         {
             duration = 1,
             action = function()
-                _instances.world:emit("player_idling")
+                _instances.world:emit("playerIdling")
             end
         }
     },
