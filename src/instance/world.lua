@@ -40,7 +40,6 @@ world:addSystem(state_manager, "update")
 
 world:addSystem(upgrades, "upgradeAcquired")
 world:addSystem(upgrades, "upgradeHovered")
-world:addSystem(upgrades, "update")
 world:addSystem(upgrades, "draw_ui")
 
 -- ENABLE SYSTEMS
@@ -65,7 +64,6 @@ function world:enableUpdates()
     world:enableSystem(physics, "update")
     world:enableSystem(camera, "update")
     world:enableSystem(state_manager, "update")
-    world:enableSystem(upgrades, "update")
 end
 
 function world:disableUpdates()

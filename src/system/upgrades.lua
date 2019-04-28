@@ -1,7 +1,7 @@
 local upgrades = System({_components.player_state})
 
 function upgrades:init()
-    self.hovered_upgrade_text = nil
+    self.hovered_upgrade = nil
 end
 
 function upgrades:upgradeAcquired(type)
@@ -36,21 +36,18 @@ function upgrades:upgradeAcquired(type)
     end
 end
 
-function upgrades:upgradeHovered(friendly_name)
-    self.hovered_upgrade_text = friendly_name
-end
-
-function upgrades:update(dt)
+function upgrades:upgradeHovered(upgrade)
+    self.hovered_upgrade = upgrade
 end
 
 function upgrades:draw_ui()
-    if self.hovered_upgrade_text then
+    if self.hovered_upgrade then
         love.graphics.draw(
-            self.hovered_upgrade_text,
-            love.graphics.getWidth() / 2 - self.hovered_upgrade_text:getWidth() / 2,
+            self.hovered_upgrade.friendly_name,
+            love.graphics.getWidth() / 2 - self.hovered_upgrade.friendly_name:getWidth() / 2,
             love.graphics.getHeight() / 3
         )
-        self.hovered_upgrade_text = nil
+        self.hovered_upgrade = nil
     end
 end
 

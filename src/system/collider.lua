@@ -86,7 +86,7 @@ function collider:update(dt)
                 self:getInstance():emit("upgradeAcquired", collectible.type)
                 e:destroy()
             else
-                self:getInstance():emit("upgradeHovered", collectible.friendly_name)
+                self:getInstance():emit("upgradeHovered", collectible)
             end
         end
     end
