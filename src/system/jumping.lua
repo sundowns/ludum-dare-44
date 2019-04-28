@@ -61,14 +61,19 @@ function jumping:update(dt)
         local e = self.AIR_CONTROLLED:get(i)
         local behavior = e:get(_components.player_state).state
         local air_control = e:get(_components.air_control)
-
         if behavior.state == "jump" or behavior.state == "fall" then
             local transform = e:get(_components.transform)
             if love.keyboard.isDown(air_control.keys.left) and not love.keyboard.isDown(air_control.keys.right) then
                 transform.pos.x = transform.pos.x - air_control.speed * dt
+                if e:has(_components.direction) then
+                    e:get(_components.direction):set("left")
+                end
             end
             if love.keyboard.isDown(air_control.keys.right) and not love.keyboard.isDown(air_control.keys.left) then
                 transform.pos.x = transform.pos.x + air_control.speed * dt
+                if e:has(_components.direction) then
+                    e:get(_components.direction):set("right")
+                end
             end
         end
     end
