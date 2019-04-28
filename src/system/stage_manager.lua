@@ -26,6 +26,8 @@ function stage_manager:stageLoaded(path)
                 self:getInstance():addEntity(_entities.upgrade_jump(object.x, object.y))
             elseif object.type == "Speed" then
                 self:getInstance():addEntity(_entities.upgrade_speed(object.x, object.y))
+            elseif object.type == "Double Jump" then
+                self:getInstance():addEntity(_entities.upgrade_double_jump(object.x, object.y))
             end
         end
     end

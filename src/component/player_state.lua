@@ -1,6 +1,11 @@
 local states = {
     default = {
-        {duration = 1}
+        {
+            duration = 1,
+            action = function()
+                _instances.world:emit("player_idling")
+            end
+        }
     },
     walk = {
         {duration = 1}

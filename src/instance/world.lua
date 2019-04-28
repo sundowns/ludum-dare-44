@@ -29,6 +29,7 @@ world:addSystem(walking, "update")
 world:addSystem(gravity, "update")
 
 world:addSystem(jumping, "update")
+world:addSystem(jumping, "player_idling")
 
 world:addSystem(physics, "update")
 
@@ -44,6 +45,8 @@ world:addSystem(upgrades, "update")
 world:addSystem(upgrades, "draw_ui")
 
 -- ENABLE SYSTEMS
+
+world:enableSystem(jumping, "player_idling")
 
 world:enableSystem(stage_manager, "stageLoaded")
 

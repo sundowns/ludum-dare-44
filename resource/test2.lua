@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 5,
-  nextobjectid = 3,
+  nextobjectid = 4,
   properties = {},
   tilesets = {
     {
@@ -154,6 +154,20 @@ return {
           shape = "rectangle",
           x = 608,
           y = 608,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 2,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 3,
+          name = "",
+          type = "Double Jump",
+          shape = "rectangle",
+          x = 288,
+          y = 480,
           width = 32,
           height = 32,
           rotation = 0,

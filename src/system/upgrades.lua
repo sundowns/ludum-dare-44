@@ -35,7 +35,19 @@ function upgrades:acquireUpgrade(powerup)
                 _components.jump,
                 {
                     jump = "space"
-                }
+                },
+                false
+            ):apply()
+        elseif upgrade.type == "DOUBLE_JUMP" then
+            if e:has(_components.jump) then
+                e:remove(_components.jump):apply()
+            end
+            e:give(
+                _components.jump,
+                {
+                    jump = "space"
+                },
+                true
             ):apply()
         elseif upgrade.type == "SPEED" then
             e:remove(_components.walk):remove(_components.air_control):apply()
@@ -58,7 +70,6 @@ function upgrades:acquireUpgrade(powerup)
         end
     end
     if powerup_was_consumed then
-        -- self.tooltip_timer:clear() -- TODO: possibly this ey
         powerup:destroy()
     end
 end
