@@ -6,6 +6,6 @@ return function(x, y)
         "SPEED",
         "Speed Boost",
         3
-    ):apply()
+    ):give(_components.sprite, "UPGRADE_SPEED", 0, 1, 1, 0, -5):apply()
     return upgrade_speed
 end

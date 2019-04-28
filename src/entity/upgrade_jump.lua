@@ -6,6 +6,6 @@ return function(x, y)
         "JUMP",
         "Jump",
         1
-    ):apply()
+    ):give(_components.sprite, "UPGRADE_JUMP", 0, 1, 1, 0, -5):apply()
     return upgrade_jump
 end
