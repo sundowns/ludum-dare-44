@@ -9,6 +9,7 @@ local jumping = _systems.jumping()
 local physics = _systems.physics()
 local camera = _systems.camera()
 local state_manager = _systems.state_manager()
+local upgrades = _systems.upgrades()
 
 -- ADD SYSTEMS
 
@@ -22,7 +23,6 @@ world:addSystem(stage_manager, "stageLoaded")
 
 world:addSystem(collider, "draw")
 world:addSystem(collider, "update")
-world:addSystem(collider, "evaluateCollidable")
 
 world:addSystem(walking, "update")
 
@@ -38,15 +38,18 @@ world:addSystem(camera, "detach")
 
 world:addSystem(state_manager, "update")
 
+world:addSystem(upgrades, "upgradeAcquired")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(stage_manager, "stageLoaded")
 
 world:enableSystem(collider, "draw")
-world:enableSystem(collider, "evaluateCollidable")
 
 world:enableSystem(camera, "attach")
 world:enableSystem(camera, "detach")
+
+world:enableSystem(upgrades, "upgradeAcquired")
 
 function world:enableUpdates()
     world:enableSystem(stage_manager, "update")

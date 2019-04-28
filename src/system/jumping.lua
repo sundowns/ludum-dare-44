@@ -30,11 +30,7 @@ function jumping:update(dt)
         if behavior.state == "jump" then
             jump:decay(dt)
 
-            -- if transform.velocity.y > 0 then
             transform.pos.y = transform.pos.y - jump.velocity * dt
-        -- else
-        -- transform.pos.y = transform.pos.y - jump.velocity * dt
-        -- end
         end
     end
 

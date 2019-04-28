@@ -9,5 +9,6 @@ return {
     jump = require(PATH .. ".jump"),
     camera = require(PATH .. ".camera"),
     player_state = require(PATH .. ".player_state"),
-    air_control = require(PATH .. ".air_control")
+    air_control = require(PATH .. ".air_control"),
+    collectible = require(PATH .. ".collectible")
 }

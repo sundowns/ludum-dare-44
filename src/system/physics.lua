@@ -6,9 +6,6 @@ function physics:update(dt)
         local transform = e:get(_components.transform)
 
         transform.pos = transform.pos + transform.velocity * dt
-        if e:has(_components.collides) then
-            self:getInstance():emit("evaluateCollidable", e)
-        end
     end
 end
 

@@ -1,15 +1,15 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.2.3",
+  tiledversion = "1.2.2",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 64,
   height = 18,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 4,
-  nextobjectid = 1,
+  nextlayerid = 5,
+  nextobjectid = 3,
   properties = {},
   tilesets = {
     {
@@ -108,6 +108,47 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0,
         3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
+      }
+    },
+    {
+      type = "objectgroup",
+      id = 4,
+      name = "Collectibles",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 1,
+          name = "",
+          type = "Jump",
+          shape = "rectangle",
+          x = 128,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 2,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 2,
+          name = "",
+          type = "Speed",
+          shape = "rectangle",
+          x = 384,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 2,
+          visible = true,
+          properties = {}
+        }
       }
     },
     {

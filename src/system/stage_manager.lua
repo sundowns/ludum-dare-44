@@ -9,12 +9,24 @@ function stage_manager:stageLoaded(path)
 
     assert(self.stage.layers["World"], "stage_manager loaded a stage with no 'World' layer.")
 
+    -- Add tiles to collision world
     local collidable_tile_data = self:readTileLayerData(self.stage.layers["World"])
-
     for y, row in ipairs(collidable_tile_data.tiles) do
         for x, cell in pairs(row) do
             -- Subtract 1 to index at 0
             self:getInstance():addEntity(_entities.tile(x - 1, y - 1))
+        end
+    end
+
+    if self.stage.layers["Collectibles"] then
+        local collidables = self:readObjectLayerData(self.stage.layers["Collectibles"])
+
+        for i, object in ipairs(collidables) do
+            if object.type == "Jump" then
+                self:getInstance():addEntity(_entities.upgrade_jump(object.x, object.y))
+            elseif object.type == "Speed" then
+                self:getInstance():addEntity(_entities.upgrade_speed(object.x, object.y))
+            end
         end
     end
 
@@ -23,8 +35,6 @@ end
 
 function stage_manager:draw()
     if self.stage then
-        love.graphics.push()
-        love.graphics.scale(_constants.FORBIDDEN_HACK_RATIO, _constants.FORBIDDEN_HACK_RATIO)
         if self.stage.layers["Background"] then
             self.stage.layers["Background"]:draw()
         end
@@ -34,8 +44,6 @@ function stage_manager:draw()
         if self.stage.layers["Foreground"] then
             self.stage.layers["Foreground"]:draw()
         end
-
-        love.graphics.pop()
     end
 end
 
@@ -54,6 +62,25 @@ function stage_manager:readTileLayerData(layer)
         tile_height = _constants.CELL_HEIGHT,
         tiles = layer.data
     }
+end
+
+function stage_manager:readObjectLayerData(objectLayer)
+    assert(objectLayer.objects)
+
+    local objects = {}
+
+    for i, object in pairs(objectLayer.objects) do
+        assert(object.type)
+        table.insert(
+            objects,
+            {
+                type = object.type,
+                x = object.x,
+                y = object.y - 1 * _constants.CELL_HEIGHT
+            }
+        )
+    end
+    return objects
 end
 
 return stage_manager
