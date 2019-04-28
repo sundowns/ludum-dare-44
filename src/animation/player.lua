@@ -33,6 +33,16 @@ return {
                 scale_y = 1,
                 rotation = 0
             },
+            run = {
+                frame_duration = 0.15,
+                x = "1-6",
+                y = 3,
+                offset_x = 0,
+                offset_y = 0,
+                scale_x = 1,
+                scale_y = 1,
+                rotation = 0
+            },
             fall = {
                 -- SAME AS DEFAULT ATM
                 frame_duration = 1000,

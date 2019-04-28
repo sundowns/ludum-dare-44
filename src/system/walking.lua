@@ -13,13 +13,22 @@ function walking:update(dt)
                 if state.state == "default" then
                     state:setState("walk")
                     _instances.world:emit("spriteStateUpdated", e, "walk")
+                    if walk.speed_multiplier > 1 then
+                        _instances.world:emit("spriteStateUpdated", e, "run")
+                    else
+                        _instances.world:emit("spriteStateUpdated", e, "walk")
+                    end
                 end
             end
             if love.keyboard.isDown(walk.keys.right) and not love.keyboard.isDown(walk.keys.left) then
                 walk:move(1)
                 if state.state == "default" then
                     state:setState("walk")
-                    _instances.world:emit("spriteStateUpdated", e, "walk")
+                    if walk.speed_multiplier > 1 then
+                        _instances.world:emit("spriteStateUpdated", e, "run")
+                    else
+                        _instances.world:emit("spriteStateUpdated", e, "walk")
+                    end
                 end
             end
 
