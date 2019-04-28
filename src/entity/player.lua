@@ -28,6 +28,6 @@ return function(x, y)
         1,
         0,
         -(_constants.CELL_HEIGHT - _constants.PLAYER_HEIGHT)
-    ):apply()
+    ):give(_components.direction):apply()
     return player
 end

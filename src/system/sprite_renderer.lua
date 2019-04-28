@@ -15,16 +15,17 @@ function spriteRenderer:draw()
         local e = self.pool:get(i)
         local img = e:get(_components.sprite)
         local pos = e:get(_components.transform).pos
+        local flipped = e:has(_components.direction) and e:get(_components.direction).value == "LEFT"
 
         if img.visible then
             love.graphics.setColor(1, 1, 1, 1)
-            love.graphics.points(pos.x, pos.y)
             self:drawSpriteInstance(
                 img.animation,
                 Vector(pos.x + img.offset_x, pos.y + img.offset_y),
                 0,
                 img.sx,
-                img.sy
+                img.sy,
+                flipped
             )
         end
     end
@@ -81,10 +82,15 @@ function spriteRenderer:update(dt)
     end
 end
 
-function spriteRenderer:drawSpriteInstance(instance, position, orientation, sx, sy)
+function spriteRenderer:drawSpriteInstance(instance, position, orientation, sx, sy, flipped)
     for i, layer in pairs(instance.animations) do
         local w, h = layer.animation:getDimensions()
-        layer.animation:draw(instance.sprite.image, position.x, position.y, orientation or 0, sx, sy)
+        local offset_position_x = position.x
+        if flipped then
+            offset_position_x = offset_position_x + w
+            sx = sx * -1
+        end
+        layer.animation:draw(instance.sprite.image, offset_position_x, position.y, orientation or 0, sx, sy)
     end
 end
 

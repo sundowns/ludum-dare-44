@@ -11,5 +11,6 @@ return {
     player_state = require(PATH .. ".player_state"),
     air_control = require(PATH .. ".air_control"),
     collectible = require(PATH .. ".collectible"),
-    health = require(PATH .. ".health")
+    health = require(PATH .. ".health"),
+    direction = require(PATH .. ".direction")
 }
