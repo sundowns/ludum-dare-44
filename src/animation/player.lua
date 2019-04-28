@@ -24,7 +24,7 @@ return {
                 y = 1
             },
             run = {
-                frame_duration = 0.15,
+                frame_duration = 0.10,
                 x = "1-6",
                 y = 3
             },
