@@ -12,5 +12,6 @@ return {
     air_control = require(PATH .. ".air_control"),
     collectible = require(PATH .. ".collectible"),
     health = require(PATH .. ".health"),
-    direction = require(PATH .. ".direction")
+    direction = require(PATH .. ".direction"),
+    goal = require(PATH .. ".goal")
 }

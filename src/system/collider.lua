@@ -82,9 +82,13 @@ function collider:update(dt)
             end
         )
         if len > 0 then
-            self:getInstance():emit("upgradeHovered", collectible)
-            if love.keyboard.isDown(_constants.UPGRADE_PICKUP_KEY) then
-                self:getInstance():emit("acquireUpgrade", e)
+            if e:has(_components.goal) then
+                print("u win!!") -- TODO: trigger a proper victory state
+            else
+                self:getInstance():emit("upgradeHovered", collectible)
+                if love.keyboard.isDown(_constants.UPGRADE_PICKUP_KEY) then
+                    self:getInstance():emit("acquireUpgrade", e)
+                end
             end
         end
     end

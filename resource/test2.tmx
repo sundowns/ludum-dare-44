@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="4">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="5">
  <tileset firstgid="1" source="TestDemo.tsx"/>
  <layer id="1" name="Background" width="64" height="24">
   <data encoding="csv">
@@ -61,6 +61,7 @@
   <object id="1" type="Jump" gid="2" x="160" y="608" width="32" height="32"/>
   <object id="2" type="Speed" gid="2" x="608" y="608" width="32" height="32"/>
   <object id="3" type="Double Jump" gid="2" x="288" y="480" width="32" height="32"/>
+  <object id="4" type="Goal" gid="2" x="1152" y="576" width="32" height="32"/>
  </objectgroup>
  <layer id="2" name="Foreground" width="64" height="24">
   <data encoding="csv">
