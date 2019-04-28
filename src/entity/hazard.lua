@@ -1,10 +1,10 @@
--- x and y are grid indices (integers)
+-- x and y are world coords (floats)
 return function(x, y)
     local hazard =
-        Entity():give(
-        _components.transform,
-        Vector(x * _constants.CELL_WIDTH, y * _constants.CELL_HEIGHT),
-        Vector(0, 0)
-    ):give(_components.damage):apply()
+        Entity():give(_components.transform, Vector(x, y), Vector(0, 0)):give(
+        _components.damage,
+        _constants.CELL_WIDTH,
+        _constants.CELL_HEIGHT
+    ):apply()
     return hazard
 end

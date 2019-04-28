@@ -16,54 +16,27 @@ return {
             default = {
                 frame_duration = 1000,
                 x = 1,
-                y = 2,
-                offset_x = 0,
-                offset_y = 0,
-                scale_x = 1,
-                scale_y = 1,
-                rotation = 0
+                y = 2
             },
             walk = {
                 frame_duration = 0.10,
                 x = "1-6",
-                y = 1,
-                offset_x = 0,
-                offset_y = 0,
-                scale_x = 1,
-                scale_y = 1,
-                rotation = 0
+                y = 1
             },
             run = {
                 frame_duration = 0.15,
                 x = "1-6",
-                y = 3,
-                offset_x = 0,
-                offset_y = 0,
-                scale_x = 1,
-                scale_y = 1,
-                rotation = 0
+                y = 3
             },
             fall = {
-                -- SAME AS DEFAULT ATM
                 frame_duration = 0.15,
                 x = 4,
-                y = 4,
-                offset_x = 0,
-                offset_y = 0,
-                scale_x = 1,
-                scale_y = 1,
-                rotation = 0
+                y = 4
             },
             jump = {
-                -- SAME AS DEFAULT ATM
                 frame_duration = 0.095,
                 x = "1-6",
-                y = 4,
-                offset_x = 0,
-                offset_y = 0,
-                scale_x = 1,
-                scale_y = 1,
-                rotation = 0
+                y = 4
             }
         }
     }

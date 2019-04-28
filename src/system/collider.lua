@@ -9,11 +9,18 @@ local collider =
         _components.player_state,
         "JUMPER"
     },
-    {_components.transform, _components.collectible, "COLLECTIBLES"}
+    {_components.transform, _components.collectible, "COLLECTIBLES"},
+    {_components.transform, _components.damage, "HAZARDS"}
 )
 
-function ignore_collectables_filter(item)
-    if not item.collectible then
+function ignore_non_rigid_bodies_filter(item)
+    if not item.collectible and not item.hazard then
+        return true
+    end
+end
+
+function only_hazards_filter(item)
+    if item.hazard then
         return true
     end
 end
@@ -35,6 +42,9 @@ function collider:entityAdded(e)
             _constants.CELL_WIDTH * 0.6,
             _constants.CELL_HEIGHT * 0.6
         )
+    elseif e:has(_components.damage) then
+        local damage = e:get(_components.damage)
+        self.collision_world:add(damage, position.x, position.y, damage.width, damage.height)
     end
 end
 
@@ -43,6 +53,8 @@ function collider:entityRemoved(e)
         self.collision_world:remove(e:get(_components.collides))
     elseif e:has(_components.collectible) then
         self.collision_world:remove(e:get(_components.collectible))
+    elseif e:has(_components.damage) then
+        self.collision_world:remove(e:get(_components.damage))
     end
 end
 
@@ -52,13 +64,14 @@ function collider:update(dt)
         local transform = e:get(_components.transform)
         local collides = e:get(_components.collides)
 
+        -- evaluate rigid collisions
         local actualX, actualY, cols, len =
             self.collision_world:move(
             collides,
             transform.pos.x,
             transform.pos.y,
             function(item, other)
-                if other.collectible then
+                if other.collectible or other.hazard then
                     return "cross"
                 else
                     return "slide"
@@ -66,6 +79,23 @@ function collider:update(dt)
             end
         )
         transform:setPosition(Vector(actualX, actualY))
+
+        -- check for collision with hazards
+        local items, len =
+            self.collision_world:queryRect(
+            transform.pos.x,
+            transform.pos.y,
+            collides.width,
+            collides.height,
+            only_hazards_filter
+        )
+
+        if len > 0 then
+            print("ouchey :(!")
+        -- TODO: have the player take damage (& evaluate death)
+        -- TODO: give player temp invulnerability
+        -- self:getInstance():emit("playerTouchedHazard", damage)
+        end
     end
 
     for i = 1, self.COLLECTIBLES.size do
@@ -107,7 +137,7 @@ function collider:update(dt)
                 transform.pos.y + collides.height,
                 collides.width * 0.93,
                 0.5,
-                ignore_collectables_filter
+                ignore_non_rigid_bodies_filter
             )
             if len > 0 then
                 state:setState("default")
@@ -120,7 +150,7 @@ function collider:update(dt)
                     transform.pos.y - 5,
                     collides.width * 0.6,
                     1,
-                    ignore_collectables_filter
+                    ignore_non_rigid_bodies_filter
                 )
                 if len2 > 0 then
                     jump:bump_head()
@@ -134,7 +164,7 @@ function collider:update(dt)
                 transform.pos.y + collides.height,
                 collides.width * 0.93,
                 0.5,
-                ignore_collectables_filter
+                ignore_non_rigid_bodies_filter
             )
             if len == 0 then
                 state:setState("fall")

@@ -30,6 +30,8 @@ function stage_manager:stageLoaded(path)
                 self:getInstance():addEntity(_entities.upgrade_double_jump(object.x, object.y))
             elseif object.type == "Goal" then
                 self:getInstance():addEntity(_entities.goal(object.x, object.y))
+            elseif object.type == "Hazard" then
+                self:getInstance():addEntity(_entities.hazard(object.x, object.y))
             end
         end
     end
