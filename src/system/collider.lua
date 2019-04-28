@@ -44,9 +44,9 @@ function collider:update(dt)
             -- query to see if player is on the ground
             local items, len =
                 self.collision_world:queryRect(
-                transform.pos.x,
+                transform.pos.x + collides.width * 0.025,
                 transform.pos.y + collides.height,
-                collides.width * 0.8,
+                collides.width * 0.95,
                 1
             )
             if len > 0 then

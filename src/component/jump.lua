@@ -8,6 +8,7 @@ local jump =
         e.base_jump_decay = _constants.JUMP_DECAY
         e.jump_decay = e.base_jump_decay
         e.bump_head_decay_multiplier = _constants.JUMP_BUMP_HEAD_DECAY_MODIFIER
+        e.fall_speed_modifier = 2
     end
 )
 
@@ -17,7 +18,12 @@ function jump:jump()
 end
 
 function jump:decay(dt)
-    self.velocity = self.velocity - _constants.JUMP_DECAY * dt
+    local fall_speed_modifier = 1
+    if self.velocity < 250 then -- value tweaked to fit when extra fall speed should kick in
+        fall_speed_modifier = self.fall_speed_modifier
+    end
+
+    self.velocity = self.velocity - _constants.JUMP_DECAY * fall_speed_modifier * dt
 end
 
 function jump:bump_head()
