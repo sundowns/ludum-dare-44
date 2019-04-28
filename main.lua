@@ -41,7 +41,8 @@ function love.load()
     Behavior = require("lib.behavior")
 
     _fonts = {
-        ["COLLECTIBLES"] = love.graphics.newFont(20)
+        ["COLLECTIBLES"] = love.graphics.newFont(20),
+        ["WARNING"] = love.graphics.newFont(30)
     }
 
     _components = require("src.component")

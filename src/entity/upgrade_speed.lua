@@ -4,7 +4,8 @@ return function(x, y)
         Entity():give(_components.transform, Vector(x, y), Vector(0, 0)):give(
         _components.collectible,
         "SPEED",
-        "Speed Boost"
+        "Speed Boost",
+        3
     ):apply()
     return upgrade_speed
 end

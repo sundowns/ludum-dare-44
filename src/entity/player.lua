@@ -17,6 +17,9 @@ return function(x, y)
             left = "a",
             right = "d"
         }
-    ):give(_components.gravity, _constants.GRAVITY):give(_components.camera):give(_components.player_state):apply()
+    ):give(_components.gravity, _constants.GRAVITY):give(_components.camera):give(
+        _components.health,
+        _constants.HEALTH_BASE
+    ):give(_components.player_state):apply()
     return player
 end

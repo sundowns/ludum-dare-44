@@ -82,11 +82,9 @@ function collider:update(dt)
             end
         )
         if len > 0 then
+            self:getInstance():emit("upgradeHovered", collectible)
             if love.keyboard.isDown(_constants.UPGRADE_PICKUP_KEY) then
-                self:getInstance():emit("upgradeAcquired", collectible.type)
-                e:destroy()
-            else
-                self:getInstance():emit("upgradeHovered", collectible)
+                self:getInstance():emit("acquireUpgrade", e)
             end
         end
     end

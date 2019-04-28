@@ -38,8 +38,9 @@ world:addSystem(camera, "detach")
 
 world:addSystem(state_manager, "update")
 
-world:addSystem(upgrades, "upgradeAcquired")
+world:addSystem(upgrades, "acquireUpgrade")
 world:addSystem(upgrades, "upgradeHovered")
+world:addSystem(upgrades, "update")
 world:addSystem(upgrades, "draw_ui")
 
 -- ENABLE SYSTEMS
@@ -51,7 +52,7 @@ world:enableSystem(collider, "draw")
 world:enableSystem(camera, "attach")
 world:enableSystem(camera, "detach")
 
-world:enableSystem(upgrades, "upgradeAcquired")
+world:enableSystem(upgrades, "acquireUpgrade")
 world:enableSystem(upgrades, "upgradeHovered")
 world:enableSystem(upgrades, "draw_ui")
 
@@ -64,6 +65,7 @@ function world:enableUpdates()
     world:enableSystem(physics, "update")
     world:enableSystem(camera, "update")
     world:enableSystem(state_manager, "update")
+    world:enableSystem(upgrades, "update")
 end
 
 function world:disableUpdates()
@@ -75,6 +77,7 @@ function world:disableUpdates()
     world:disableSystem(physics, "update")
     world:disableSystem(camera, "update")
     world:disableSystem(state_manager, "update")
+    world:disableSystem(upgrades, "update")
 end
 
 world:enableUpdates()

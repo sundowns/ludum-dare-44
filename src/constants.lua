@@ -10,5 +10,10 @@ return {
     AIR_CONTROL_SPEED = 150,
     UPGRADE_PICKUP_KEY = "e", --hack woooo
     UPGRADE_SPEED_GROUND_MULTIPLIER = 1.6,
-    UPGRADE_SPEED_AIR_MULTIPLIER = 1.5
+    UPGRADE_SPEED_AIR_MULTIPLIER = 1.5,
+    HEALTH_BASE = 9,
+    COLOURS = {
+        WARNING = {1, 0, 0, 0.8},
+        ACQUIRE_UPGRADE = {0, 0, 0, 1}
+    }
 }
