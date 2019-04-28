@@ -50,7 +50,7 @@ function love.load()
     _systems = require("src.system")
     _instances = require("src.instance")
 
-    _instances.world:emit("stageLoaded", "resource/test.lua")
+    _instances.world:emit("stageLoaded", "resource/test2.lua")
 end
 
 function love.update(dt)

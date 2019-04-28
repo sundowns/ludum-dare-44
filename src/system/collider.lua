@@ -95,7 +95,7 @@ function collider:update(dt)
         local transform = e:get(_components.transform)
         local collides = e:get(_components.collides)
         local state = e:get(_components.player_state).state
-        if state.state == "jump" then
+        if state.state == "jump" or state.state == "falling" then
             -- query to see if player is on the ground
             local items, len =
                 self.collision_world:queryRect(
@@ -120,6 +120,19 @@ function collider:update(dt)
                 if len2 > 0 then
                     jump:bump_head()
                 end
+            end
+        elseif state.state == "walk" or state.state == "default" then
+            -- query to see if player is on the ground
+            local items, len =
+                self.collision_world:queryRect(
+                transform.pos.x + collides.width * 0.035,
+                transform.pos.y + collides.height,
+                collides.width * 0.93,
+                0.5,
+                ignore_collectables_filter
+            )
+            if len == 0 then
+                state:setState("falling")
             end
         end
     end

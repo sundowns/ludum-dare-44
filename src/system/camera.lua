@@ -18,7 +18,7 @@ function camera:update(dt)
     for i = 1, self.pool.size do
         local e = self.pool:get(i)
         local transform = e:get(_components.transform)
-        self.camera:lookAt(transform.pos.x, self.camera_height)
+        self.camera:lookAt(transform.pos.x, transform.pos.y)
     end
 end
 

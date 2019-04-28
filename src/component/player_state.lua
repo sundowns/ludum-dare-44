@@ -7,6 +7,9 @@ local states = {
     },
     jump = {
         {duration = 1}
+    },
+    falling = {
+        {duration = 1}
     }
 }
 

@@ -30,7 +30,7 @@ function stage_manager:stageLoaded(path)
         end
     end
 
-    self:getInstance():addEntity(_entities.player(1, 15))
+    self:getInstance():addEntity(_entities.player(2, 18))
 end
 
 function stage_manager:draw()

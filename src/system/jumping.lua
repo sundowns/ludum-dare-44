@@ -15,9 +15,11 @@ function jumping:update(dt)
         local jump = e:get(_components.jump)
         local transform = e:get(_components.transform)
         local behavior = e:get(_components.player_state).state
+        print(behavior.state)
 
         if love.keyboard.isDown(jump.keys.jump) and (behavior.state == "default" or behavior.state == "walk") then
             transform.pos.y = transform.pos.y - 5
+
             jump:jump()
             behavior:setState("jump")
 
@@ -29,6 +31,9 @@ function jumping:update(dt)
 
         if behavior.state == "jump" then
             jump:decay(dt)
+            if jump.velocity < jump.falling_trigger_velocity then
+                behavior:setState("falling")
+            end
 
             transform.pos.y = transform.pos.y - jump.velocity * dt
         end
@@ -39,7 +44,7 @@ function jumping:update(dt)
         local behavior = e:get(_components.player_state).state
         local air_control = e:get(_components.air_control)
 
-        if behavior.state == "jump" then
+        if behavior.state == "jump" or behavior.state == "falling" then
             local transform = e:get(_components.transform)
             if love.keyboard.isDown(air_control.keys.left) and not love.keyboard.isDown(air_control.keys.right) then
                 transform.pos.x = transform.pos.x - air_control.speed * dt
