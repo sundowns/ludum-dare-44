@@ -13,5 +13,6 @@ return {
     collectible = require(PATH .. ".collectible"),
     health = require(PATH .. ".health"),
     direction = require(PATH .. ".direction"),
-    goal = require(PATH .. ".goal")
+    goal = require(PATH .. ".goal"),
+    damage = require(PATH .. ".damage")
 }
