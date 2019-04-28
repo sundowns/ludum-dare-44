@@ -65,17 +65,6 @@ function love.draw()
     _instances.world:emit("draw")
     _instances.world:emit("detach")
     _instances.world:emit("draw_ui")
-
-    -- TODO: remove below
-    local x, y = 10, 60
-    function bump(y, delta)
-        return y + delta
-    end
-    love.graphics.print("[CONTROLS]", x, y)
-    y = bump(y, 40)
-    love.graphics.print("[a] Left", x, y)
-    y = bump(y, 25)
-    love.graphics.print("[d] Right", x, y)
 end
 
 function love.keyreleased(key)

@@ -2,7 +2,7 @@ local camera = System({_components.camera, _components.transform})
 
 function camera:init()
     self.camera = Camera(0, camera_height)
-    self.camera:zoomTo(1.5)
+    self.camera:zoomTo(2.0)
 end
 
 function camera:attach()
