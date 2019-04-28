@@ -5,6 +5,7 @@ _components = nil
 _entities = nil
 _instances = nil
 _systems = nil
+_fonts = {}
 
 -- Libraries
 ECS = nil
@@ -39,6 +40,10 @@ function love.load()
     Camera = require("lib.camera")
     Behavior = require("lib.behavior")
 
+    _fonts = {
+        ["COLLECTIBLES"] = love.graphics.newFont(20)
+    }
+
     _components = require("src.component")
     _entities = require("src.entity")
     _systems = require("src.system")
@@ -56,6 +61,9 @@ function love.draw()
     _instances.world:emit("attach")
     _instances.world:emit("draw")
     _instances.world:emit("detach")
+    _instances.world:emit("draw_ui")
+
+    -- TODO: remove below
     local x, y = 10, 60
     function bump(y, delta)
         return y + delta
