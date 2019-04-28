@@ -5,7 +5,7 @@ return function(x, y)
         _components.transform,
         Vector(x * _constants.CELL_WIDTH, y * _constants.CELL_HEIGHT),
         Vector(0, 0)
-    ):give(_components.collides, _constants.CELL_WIDTH, _constants.CELL_HEIGHT):give(
+    ):give(_components.collides, _constants.PLAYER_WIDTH, _constants.PLAYER_HEIGHT):give(
         _components.walk,
         {
             left = "a",
@@ -20,6 +20,14 @@ return function(x, y)
     ):give(_components.gravity, _constants.GRAVITY):give(_components.camera):give(
         _components.health,
         _constants.HEALTH_BASE
-    ):give(_components.player_state):apply()
+    ):give(_components.player_state):give(
+        _components.sprite,
+        "PLAYER",
+        0,
+        1,
+        1,
+        0,
+        -(_constants.CELL_HEIGHT - _constants.PLAYER_HEIGHT)
+    ):apply()
     return player
 end

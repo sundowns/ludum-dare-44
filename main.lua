@@ -17,12 +17,14 @@ Timer = nil
 Camera = nil
 Bump = nil
 Util = nil
+anim8 = nil
 
 function love.load()
-    love.graphics.setDefaultFilter("nearest", "nearest", 1)
+    love.graphics.setDefaultFilter("nearest", "nearest", 0)
     _constants = require("src.constants")
     Util = require("lib.util")
     assets = require("lib.cargo").init("asset")
+    anim8 = require("lib.anim8")
     STI = require("lib.sti")
     ECS =
         require("lib.concord").init(

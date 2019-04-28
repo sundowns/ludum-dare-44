@@ -18,7 +18,14 @@ function spriteRenderer:draw()
 
         if img.visible then
             love.graphics.setColor(1, 1, 1, 1)
-            self:drawSpriteInstance(img.animation, Vector(pos.x, pos.y), 0, img.sx, img.sy)
+            love.graphics.points(pos.x, pos.y)
+            self:drawSpriteInstance(
+                img.animation,
+                Vector(pos.x + img.offset_x, pos.y + img.offset_y),
+                0,
+                img.sx,
+                img.sy
+            )
         end
     end
 end

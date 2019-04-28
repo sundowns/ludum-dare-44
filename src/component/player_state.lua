@@ -8,12 +8,14 @@ local states = {
         }
     },
     walk = {
-        {duration = 1}
+        {
+            duration = 1
+        }
     },
     jump = {
         {duration = 1}
     },
-    falling = {
+    fall = {
         {duration = 1}
     }
 }

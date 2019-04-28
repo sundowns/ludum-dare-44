@@ -12,12 +12,14 @@ function walking:update(dt)
                 walk:move(-1)
                 if state.state == "default" then
                     state:setState("walk")
+                    _instances.world:emit("spriteStateUpdated", e, "walk")
                 end
             end
             if love.keyboard.isDown(walk.keys.right) and not love.keyboard.isDown(walk.keys.left) then
                 walk:move(1)
                 if state.state == "default" then
                     state:setState("walk")
+                    _instances.world:emit("spriteStateUpdated", e, "walk")
                 end
             end
 
@@ -26,6 +28,7 @@ function walking:update(dt)
                 walk:applyFriction(dt)
                 if walk.x_velocity == 0 then
                     state:setState("default")
+                    _instances.world:emit("spriteStateUpdated", e, "default")
                 end
             end
         end

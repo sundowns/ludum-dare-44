@@ -17,9 +17,9 @@ world:addSystem(stage_manager, "draw")
 world:addSystem(stage_manager, "update")
 world:addSystem(stage_manager, "stageLoaded")
 
--- world:addSystem(sprite_renderer, "draw")
--- world:addSystem(sprite_renderer, "update")
--- world:addSystem(sprite_renderer, "spriteStateUpdated")
+world:addSystem(sprite_renderer, "draw")
+world:addSystem(sprite_renderer, "update")
+world:addSystem(sprite_renderer, "spriteStateUpdated")
 
 world:addSystem(collider, "draw")
 world:addSystem(collider, "update")
@@ -50,6 +50,9 @@ world:enableSystem(jumping, "player_idling")
 
 world:enableSystem(stage_manager, "stageLoaded")
 
+world:enableSystem(sprite_renderer, "draw")
+world:enableSystem(sprite_renderer, "spriteStateUpdated")
+
 world:enableSystem(collider, "draw")
 
 world:enableSystem(camera, "attach")
@@ -69,6 +72,7 @@ function world:enableUpdates()
     world:enableSystem(camera, "update")
     world:enableSystem(state_manager, "update")
     world:enableSystem(upgrades, "update")
+    world:enableSystem(sprite_renderer, "update")
 end
 
 function world:disableUpdates()
@@ -81,6 +85,7 @@ function world:disableUpdates()
     world:disableSystem(camera, "update")
     world:disableSystem(state_manager, "update")
     world:disableSystem(upgrades, "update")
+    world:disableSystem(sprite_renderer, "update")
 end
 
 world:enableUpdates()
