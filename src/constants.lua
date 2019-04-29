@@ -6,7 +6,7 @@ return {
     SAW_HEIGHT = 24,
     SAW_WIDTH = 24,
     SPIKE_HEIGHT = 10,
-    SPIKE_WIDTH = 32,
+    SPIKE_WIDTH = 26,
     GRAVITY = 250,
     JUMP_DECAY = 600,
     JUMP_ACCEL = 535,

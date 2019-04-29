@@ -44,7 +44,13 @@ function collider:entityAdded(e)
         )
     elseif e:has(_components.damage) then
         local damage = e:get(_components.damage)
-        self.collision_world:add(damage, position.x, position.y, damage.width, damage.height)
+        self.collision_world:add(
+            damage,
+            position.x + damage.offset.x,
+            position.y + damage.offset.y,
+            damage.width,
+            damage.height
+        )
     end
 end
 
