@@ -1,10 +1,10 @@
-assert(assets.spikes)
+assert(assets.tileset)
 assert(anim8)
 
 return {
     id = "SPIKES",
-    image = assets.spikes,
-    grid = anim8.newGrid(32, 32, assets.spikes:getWidth(), assets.spikes:getHeight()),
+    image = assets.tileset,
+    grid = anim8.newGrid(32, 32, assets.tileset:getWidth(), assets.tileset:getHeight()),
     animation_names = {
         "default"
     },
@@ -13,7 +13,7 @@ return {
             default = {
                 frame_duration = 1000,
                 x = 1,
-                y = 1
+                y = 3
             }
         }
     }
