@@ -11,6 +11,7 @@ local camera = _systems.camera()
 local state_manager = _systems.state_manager()
 local upgrades = _systems.upgrades()
 local damage = _systems.damage()
+local levitation = _systems.levitation()
 
 -- ADD SYSTEMS
 
@@ -48,6 +49,8 @@ world:addSystem(upgrades, "draw_ui")
 world:addSystem(damage, "playerTouchedHazard")
 world:addSystem(damage, "update")
 
+world:addSystem(levitation, "update")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(jumping, "playerIdling")
@@ -80,6 +83,7 @@ function world:enableUpdates()
     world:enableSystem(upgrades, "update")
     world:enableSystem(sprite_renderer, "update")
     world:enableSystem(damage, "update")
+    world:enableSystem(levitation, "update")
 end
 
 function world:disableUpdates()
@@ -94,6 +98,7 @@ function world:disableUpdates()
     world:disableSystem(upgrades, "update")
     world:disableSystem(sprite_renderer, "update")
     world:disableSystem(damage, "update")
+    world:disableSystem(levitation, "update")
 end
 
 world:enableUpdates()

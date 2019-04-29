@@ -12,5 +12,6 @@ return {
     camera = require(PATH .. ".camera"),
     state_manager = require(PATH .. ".state_manager"),
     upgrades = require(PATH .. ".upgrades"),
-    damage = require(PATH .. ".damage")
+    damage = require(PATH .. ".damage"),
+    levitation = require(PATH .. ".levitation")
 }
