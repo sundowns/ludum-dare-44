@@ -27,7 +27,7 @@ return function(x, y)
         1,
         1,
         0,
-        -(_constants.CELL_HEIGHT - _constants.PLAYER_HEIGHT) - 3
+        -(_constants.CELL_HEIGHT - _constants.PLAYER_HEIGHT) - 1
     ):give(_components.direction):apply()
     return player
 end
