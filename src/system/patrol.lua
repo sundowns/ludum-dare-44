@@ -11,8 +11,8 @@ function patrol:update(dt)
             position.y = position.y + (patrolling.origin.y - patrolling.destination.y) * patrolling.speed * dt
 
             if
-                Util.m.withinVariance(position.x, patrolling.origin.x, 1) and
-                    Util.m.withinVariance(position.y, patrolling.origin.y, 1)
+                Util.m.withinVariance(position.x, patrolling.origin.x, 5) and
+                    Util.m.withinVariance(position.y, patrolling.origin.y, 5)
              then
                 patrolling:target("DESTINATION")
             end
@@ -21,8 +21,8 @@ function patrol:update(dt)
             position.y = position.y + (patrolling.destination.y - patrolling.origin.y) * patrolling.speed * dt
 
             if
-                Util.m.withinVariance(position.x, patrolling.destination.x, 1) and
-                    Util.m.withinVariance(position.y, patrolling.destination.y, 1)
+                Util.m.withinVariance(position.x, patrolling.destination.x, 5) and
+                    Util.m.withinVariance(position.y, patrolling.destination.y, 5)
              then
                 patrolling:target("ORIGIN")
             end

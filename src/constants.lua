@@ -22,7 +22,7 @@ return {
         ACQUIRE_UPGRADE = {0, 0, 0, 1}
     },
     COST_JUMP = 1,
-    COST_DOUBLE_JUMP = 3,
+    COST_DOUBLE_JUMP = 2,
     COST_SPEED_BOOST = 3,
     COST_AIR_DASH = 3
 }

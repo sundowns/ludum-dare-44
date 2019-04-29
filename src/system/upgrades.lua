@@ -154,7 +154,7 @@ function upgrades:draw_ui()
         love.graphics.draw(
             self.too_expensive_text,
             love.graphics.getWidth() / 2 - self.too_expensive_text:getWidth() / 2,
-            love.graphics.getHeight() / 4
+            love.graphics.getHeight() / 2
         )
     end
 
