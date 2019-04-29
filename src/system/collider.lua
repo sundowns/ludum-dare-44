@@ -92,8 +92,6 @@ function collider:update(dt)
 
         if len > 0 then
             local damage = items[len]
-            -- TODO: have the player take damage (& evaluate death)
-            -- TODO: give player temp invulnerability
             self:getInstance():emit("playerTouchedHazard", damage.value)
         end
     end
@@ -116,7 +114,7 @@ function collider:update(dt)
                 local collision = cols[i]
                 if collision.other.is_player then
                     if e:has(_components.goal) then
-                        print("u win!!") -- TODO: trigger a proper victory state
+                        GamestateManager.switch(victory)
                     else
                         self:getInstance():emit("upgradeHovered", collectible)
                         if love.keyboard.isDown(_constants.UPGRADE_PICKUP_KEY) then

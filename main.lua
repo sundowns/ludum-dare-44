@@ -3,9 +3,11 @@ function love.load()
     GamestateManager = require("lib.gamestate")
     require("title")
     require("game")
+    require("victory")
+    require("defeat")
     love.window.setIcon(love.image.newImageData("asset/icon.png"))
     GamestateManager.registerEvents()
-    GamestateManager.switch(game) -- TODO: make this title
+    GamestateManager.switch(title)
 end
 
 function love.update(dt)

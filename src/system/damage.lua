@@ -10,7 +10,7 @@ function damage:playerTouchedHazard(damage)
             self:getInstance():emit("shake", 0.6, 1.5)
             health.current = health.current - damage
             if health.current < 1 then
-                print("ur dead idiot") -- TODO: proper end/defeat state
+                GamestateManager.switch(defeat)
             end
 
             e:give(_components.invulnerability):give(_components.hurt):apply()

@@ -237,7 +237,7 @@
    <properties>
     <property name="direction" value="LEFT"/>
     <property name="distance" type="int" value="8"/>
-    <property name="speed" type="float" value="1.15"/>
+    <property name="speed" type="float" value="0.8"/>
    </properties>
   </object>
   <object id="42" type="Heart" gid="270" x="2688" y="512" width="32" height="32"/>
@@ -306,7 +306,7 @@
    <properties>
     <property name="direction" value="DOWN"/>
     <property name="distance" type="int" value="4"/>
-    <property name="speed" type="float" value="1.3"/>
+    <property name="speed" type="float" value="1.35"/>
    </properties>
   </object>
   <object id="71" type="Moving Hazard" gid="260" x="4864" y="640" width="32" height="32">
@@ -355,7 +355,7 @@
    <properties>
     <property name="direction" value="LEFT"/>
     <property name="distance" type="int" value="12"/>
-    <property name="speed" type="float" value="1.3"/>
+    <property name="speed" type="float" value="1.25"/>
    </properties>
   </object>
   <object id="79" type="Goal" gid="271" x="5312" y="640" width="32" height="32"/>

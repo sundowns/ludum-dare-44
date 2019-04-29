@@ -775,7 +775,7 @@ return {
           properties = {
             ["direction"] = "LEFT",
             ["distance"] = 8,
-            ["speed"] = 1.15
+            ["speed"] = 0.8
           }
         },
         {
@@ -1181,7 +1181,7 @@ return {
           properties = {
             ["direction"] = "DOWN",
             ["distance"] = 4,
-            ["speed"] = 1.3
+            ["speed"] = 1.35
           }
         },
         {
@@ -1307,7 +1307,7 @@ return {
           properties = {
             ["direction"] = "LEFT",
             ["distance"] = 12,
-            ["speed"] = 1.3
+            ["speed"] = 1.25
           }
         },
         {

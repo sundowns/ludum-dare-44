@@ -75,8 +75,6 @@ end
 function game:keypressed(key)
     if key == "f1" then -- TODO: REMOVE!!
         _debug = not _debug
-    elseif key == "escape" then
-        love.event.quit() -- TODO: REMOVE!!
     end
     _instances.world:emit("keypressed", key)
 end
