@@ -6,7 +6,7 @@ local collectible =
         e.collectible = true
         e.type = type
         e.health_cost = health_cost or 0
-        e.friendly_name = love.graphics.newText(_fonts.COLLECTIBLES, "Press [E] to acquire " .. friendly_name)
+        e.friendly_name = love.graphics.newText(_fonts.COLLECTIBLES, "Press [E] to acquire '" .. friendly_name .. "'")
     end
 )
 

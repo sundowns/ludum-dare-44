@@ -3,7 +3,7 @@ local upgrades = System({_components.player_state, _components.health})
 function upgrades:init()
     self.hovered_upgrade = nil
     self.show_too_expensive_warning = false
-    self.too_expensive_text = love.graphics.newText(_fonts.WARNING, "Not enough hearts </3")
+    self.too_expensive_text = love.graphics.newText(_fonts.WARNING, "Not enough hearts :(")
     self.tooltip_timer = Timer.new()
     self.heart_quad =
         love.graphics.newQuad(
