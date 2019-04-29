@@ -9,5 +9,6 @@ return {
     goal = require(PATH .. ".goal"),
     hazard = require(PATH .. ".hazard"),
     moving_hazard = require(PATH .. ".moving_hazard"),
-    moving_tile = require(PATH .. ".moving_tile")
+    moving_tile = require(PATH .. ".moving_tile"),
+    heart = require(PATH .. ".heart")
 }

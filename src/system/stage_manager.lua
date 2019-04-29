@@ -64,6 +64,8 @@ function stage_manager:stageLoaded(path)
                 )
             elseif object.type == "Spawn" then
                 self:getInstance():addEntity(_entities.player(object.x, object.y))
+            elseif object.type == "Heart" then
+                self:getInstance():addEntity(_entities.heart(object.x, object.y))
             end
         end
     end

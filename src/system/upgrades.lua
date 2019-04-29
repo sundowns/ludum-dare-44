@@ -96,6 +96,9 @@ function upgrades:acquireUpgrade(powerup)
                 },
                 _constants.UPGRADE_SPEED_AIR_MULTIPLIER
             ):apply()
+        elseif upgrade.type == "HEART" then
+            local health = e:get(_components.health)
+            health:reduce(-1) -- heal a heart lmao
         end
     end
     if powerup_was_consumed then
