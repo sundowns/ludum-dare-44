@@ -7,7 +7,7 @@ function love.load()
     require("defeat")
     love.window.setIcon(love.image.newImageData("asset/icon.png"))
     GamestateManager.registerEvents()
-    GamestateManager.switch(game) -- TODO: make title
+    GamestateManager.switch(title)
 end
 
 function love.update(dt)

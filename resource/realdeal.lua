@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 15,
-  nextobjectid = 82,
+  nextobjectid = 86,
   properties = {},
   tilesets = {
     {
@@ -298,20 +298,6 @@ return {
       draworder = "topdown",
       properties = {},
       objects = {
-        {
-          id = 1,
-          name = "",
-          type = "Spawn",
-          shape = "rectangle",
-          x = 864,
-          y = 992,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          gid = 259,
-          visible = true,
-          properties = {}
-        },
         {
           id = 2,
           name = "",
@@ -807,7 +793,7 @@ return {
           properties = {
             ["direction"] = "UP",
             ["distance"] = 3,
-            ["speed"] = 1.25
+            ["speed"] = 1
           }
         },
         {
@@ -825,7 +811,7 @@ return {
           properties = {
             ["direction"] = "UP",
             ["distance"] = 5,
-            ["speed"] = 1.15
+            ["speed"] = 1.05
           }
         },
         {
@@ -843,7 +829,7 @@ return {
           properties = {
             ["direction"] = "UP",
             ["distance"] = 4,
-            ["speed"] = 1.2
+            ["speed"] = 1.15
           }
         },
         {
@@ -897,7 +883,7 @@ return {
           properties = {
             ["direction"] = "RIGHT",
             ["distance"] = 5,
-            ["speed"] = 1
+            ["speed"] = 0.8
           }
         },
         {
@@ -1199,7 +1185,7 @@ return {
           properties = {
             ["direction"] = "LEFT",
             ["distance"] = 20,
-            ["speed"] = 0.3
+            ["speed"] = 0.2
           }
         },
         {
@@ -1235,7 +1221,7 @@ return {
           properties = {
             ["direction"] = "DOWN",
             ["distance"] = 4,
-            ["speed"] = 1.1
+            ["speed"] = 1
           }
         },
         {
@@ -1307,7 +1293,7 @@ return {
           properties = {
             ["direction"] = "LEFT",
             ["distance"] = 12,
-            ["speed"] = 1.25
+            ["speed"] = 1.1
           }
         },
         {
@@ -1353,6 +1339,20 @@ return {
           height = 32,
           rotation = 0,
           gid = 270,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 85,
+          name = "",
+          type = "Spawn",
+          shape = "rectangle",
+          x = 896,
+          y = 1024,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 259,
           visible = true,
           properties = {}
         }

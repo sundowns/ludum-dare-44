@@ -194,10 +194,11 @@ function collider:updateHitbox(e)
     if e:has(_components.damage) then
         -- dont care about the result, update will handle that
         local transform = e:get(_components.transform)
+        local damage = e:get(_components.damage)
         self.collision_world:move(
             e:get(_components.damage),
-            transform.pos.x,
-            transform.pos.y,
+            transform.pos.x + damage.offset.x,
+            transform.pos.y + damage.offset.y,
             function(item, other)
                 return "cross" -- no collision resolution thnx
             end

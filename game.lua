@@ -1,7 +1,7 @@
 game = {}
 
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = true -- TODO: make false (and remove toggle entirely)
+_debug = false -- TODO: make false (and remove toggle entirely)
 _constants = nil
 _components = nil
 _entities = nil
@@ -73,8 +73,5 @@ function game:keyreleased(key)
 end
 
 function game:keypressed(key)
-    if key == "f1" then -- TODO: REMOVE!!
-        _debug = not _debug
-    end
     _instances.world:emit("keypressed", key)
 end

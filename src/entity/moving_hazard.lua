@@ -4,8 +4,9 @@ return function(x, y, direction, distance, patrol_speed)
     local moving_hazard =
         Entity():give(_components.transform, Vector(x, y), Vector(0, 0)):give(
         _components.damage,
-        _constants.CELL_WIDTH,
-        _constants.CELL_HEIGHT
+        _constants.SAW_WIDTH,
+        _constants.SAW_HEIGHT,
+        Vector(4, 4)
     ):give(_components.sprite, "SAW", 0, 1, 1, 0, 0)
 
     -- special calcs for patrolling things direction
