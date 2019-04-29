@@ -6,6 +6,6 @@ return function(x, y)
         "GOAL",
         "Goal",
         0
-    ):give(_components.goal):apply()
+    ):give(_components.goal):give(_components.sprite, "GOAL", 0, 1, 1, 0, 0):apply()
     return goal
 end
