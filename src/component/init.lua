@@ -16,5 +16,6 @@ return {
     goal = require(PATH .. ".goal"),
     damage = require(PATH .. ".damage"),
     invulnerability = require(PATH .. ".invulnerability"),
-    levitating = require(PATH .. ".levitating")
+    levitating = require(PATH .. ".levitating"),
+    patrolling = require(PATH .. ".patrolling")
 }
