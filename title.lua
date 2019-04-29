@@ -9,7 +9,7 @@ local kitty_animation = nil
 local kitty_scale = 4
 
 function title:init()
-    splashScreen = love.graphics.newImage("asset/titlescreen.png")
+    splashScreen = love.graphics.newImage("asset/titlescreen_nocontrols.png")
     kitty_img = love.graphics.newImage("asset/player.png")
     local g = anim8.newGrid(32, 32, kitty_img:getWidth(), kitty_img:getHeight())
     kitty_animation = anim8.newAnimation(g("1-6", 1), 0.125)
@@ -38,7 +38,7 @@ function title:draw()
     kitty_animation:draw(
         kitty_img,
         love.graphics.getWidth() / 2 - (12 * kitty_scale),
-        love.graphics.getHeight() / 10,
+        love.graphics.getHeight() / 4,
         0,
         kitty_scale,
         kitty_scale
