@@ -14,8 +14,8 @@ return {
     layers = {
         {
             default = {
-                frame_duration = 1000,
-                x = 1,
+                frame_duration = 0.15,
+                x = "1-6",
                 y = 2
             },
             walk = {
@@ -30,8 +30,8 @@ return {
             },
             fall = {
                 frame_duration = 0.15,
-                x = 4,
-                y = 4
+                x = "1-3",
+                y = 5
             },
             jump = {
                 frame_duration = 0.095,
