@@ -4,7 +4,8 @@ return function(x, y)
         Entity():give(_components.transform, Vector(x, y), Vector(0, 0)):give(
         _components.collides,
         _constants.PLAYER_WIDTH,
-        _constants.PLAYER_HEIGHT
+        _constants.PLAYER_HEIGHT,
+        true
     ):give(
         _components.walk,
         {

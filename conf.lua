@@ -5,5 +5,5 @@ function love.conf(t)
     t.window.minwidth = 1280
     t.window.minheight = 720
     -- t.window.fullscreen = true
-    -- t.console = true
+    t.console = true
 end
