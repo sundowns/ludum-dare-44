@@ -1,5 +1,5 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = true
+_debug = false
 _constants = nil
 _components = nil
 _entities = nil

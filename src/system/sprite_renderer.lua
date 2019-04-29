@@ -1,16 +1,24 @@
-local spriteRenderer = System({_components.sprite, _components.transform})
+local sprite_renderer = System({_components.sprite, _components.transform})
 
-function spriteRenderer:init()
+function sprite_renderer:init()
     self.spriteBank = {}
+    self.invulnerability_flash_timer = Timer.new()
+    self.invulnerability_flash_timer:every(
+        _constants.INVULNERABILITY_FLASH_INTERVAL,
+        function()
+            self.invulnerability_is_flashing = not self.invulnerability_is_flashing
+        end
+    )
+    self.invulnerability_is_flashing = false
 end
 
-function spriteRenderer:entityAdded(e)
+function sprite_renderer:entityAdded(e)
     local sprite = e:get(_components.sprite)
     local instance = self:createInstance(sprite.name)
     sprite:setAnimationData(instance)
 end
 
-function spriteRenderer:draw()
+function sprite_renderer:draw()
     for i = 1, self.pool.size do
         local e = self.pool:get(i)
         local img = e:get(_components.sprite)
@@ -18,7 +26,7 @@ function spriteRenderer:draw()
         local flipped = e:has(_components.direction) and e:get(_components.direction).value == "LEFT"
 
         if img.visible then
-            love.graphics.setColor(1, 1, 1, 1)
+            self:handle_invulnerability(e)
             self:drawSpriteInstance(
                 img.animation,
                 Vector(pos.x + img.offset_x, pos.y + img.offset_y),
@@ -31,7 +39,20 @@ function spriteRenderer:draw()
     end
 end
 
-function spriteRenderer:loadSpriteSheet(spriteName)
+function sprite_renderer:handle_invulnerability(e)
+    if e:has(_components.invulnerability) then
+        if self.invulnerability_is_flashing then
+            love.graphics.setColor(1, 0, 0, 1)
+        else
+            love.graphics.setColor(1, 1, 1, 1)
+        end
+    else
+        love.graphics.setColor(1, 1, 1, 1)
+    end
+    -- meant to flash white/normal
+end
+
+function sprite_renderer:loadSpriteSheet(spriteName)
     local err, sprite_file
     sprite_file, err = love.filesystem.load("src/animation/" .. string.lower(spriteName) .. ".lua")
     if not sprite_file then
@@ -43,7 +64,7 @@ function spriteRenderer:loadSpriteSheet(spriteName)
     return self.spriteBank[spriteName]
 end
 
-function spriteRenderer:createInstance(spriteName, currentState)
+function sprite_renderer:createInstance(spriteName, currentState)
     if spriteName == nil then
         return nil
     end
@@ -67,12 +88,12 @@ function spriteRenderer:createInstance(spriteName, currentState)
     }
 end
 
-function spriteRenderer:spriteStateUpdated(entity, newState)
+function sprite_renderer:spriteStateUpdated(entity, newState)
     local sprite = entity:get(_components.sprite)
     sprite.animation.animations = self:retrieveLayerInstances(sprite.animation.sprite.id, newState)
 end
 
-function spriteRenderer:update(dt)
+function sprite_renderer:update(dt)
     for i = 1, self.pool.size do
         local e = self.pool:get(i)
         local sprite = e:get(_components.sprite)
@@ -80,9 +101,10 @@ function spriteRenderer:update(dt)
             layer.animation:update(dt)
         end
     end
+    self.invulnerability_flash_timer:update(dt)
 end
 
-function spriteRenderer:drawSpriteInstance(instance, position, orientation, sx, sy, flipped)
+function sprite_renderer:drawSpriteInstance(instance, position, orientation, sx, sy, flipped)
     for i, layer in pairs(instance.animations) do
         local w, h = layer.animation:getDimensions()
         local offset_position_x = position.x
@@ -94,7 +116,7 @@ function spriteRenderer:drawSpriteInstance(instance, position, orientation, sx, 
     end
 end
 
-function spriteRenderer:retrieveLayerInstances(spriteName, currentState)
+function sprite_renderer:retrieveLayerInstances(spriteName, currentState)
     local layers = {}
     for i, layer in pairs(self.spriteBank[spriteName].layers) do
         local anim_data = layer[currentState]
@@ -115,4 +137,4 @@ function spriteRenderer:retrieveLayerInstances(spriteName, currentState)
     return layers
 end
 
-return spriteRenderer
+return sprite_renderer

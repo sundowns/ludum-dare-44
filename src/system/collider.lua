@@ -136,7 +136,7 @@ function collider:update(dt)
                 transform.pos.x + collides.width * 0.035,
                 transform.pos.y + collides.height,
                 collides.width * 0.93,
-                0.5,
+                0.05,
                 ignore_non_rigid_bodies_filter
             )
             if len > 0 then
