@@ -1,7 +1,7 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.2.3",
+  tiledversion = "1.2.2",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 64,
@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 5,
-  nextobjectid = 10,
+  nextobjectid = 12,
   properties = {},
   tilesets = {
     {
@@ -216,6 +216,42 @@ return {
           gid = 2,
           visible = true,
           properties = {}
+        },
+        {
+          id = 10,
+          name = "",
+          type = "Moving Hazard",
+          shape = "rectangle",
+          x = 352,
+          y = 544,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 2,
+          visible = true,
+          properties = {
+            ["direction"] = "UP",
+            ["distance"] = 3,
+            ["speed"] = 0.7
+          }
+        },
+        {
+          id = 11,
+          name = "",
+          type = "Moving Tile",
+          shape = "rectangle",
+          x = 224,
+          y = 480,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 2,
+          visible = true,
+          properties = {
+            ["direction"] = "LEFT",
+            ["distance"] = 3,
+            ["speed"] = 0.5
+          }
         }
       }
     },

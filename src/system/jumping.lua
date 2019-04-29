@@ -21,8 +21,6 @@ function jumping:update(dt)
         end
 
         if love.keyboard.isDown(jump.keys.jump) and (behavior.state == "default" or behavior.state == "walk") then
-            transform.pos.y = transform.pos.y - 5
-
             jump:jump()
             behavior:setState("jump")
             _instances.world:emit("spriteStateUpdated", e, "jump")

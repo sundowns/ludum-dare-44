@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="64" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="10">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="12">
  <tileset firstgid="1" source="TestDemo.tsx"/>
  <layer id="1" name="Background" width="64" height="24">
   <data encoding="csv">
@@ -64,6 +64,20 @@
   <object id="4" type="Goal" gid="2" x="1152" y="576" width="32" height="32"/>
   <object id="6" type="Hazard" gid="2" x="288" y="640" width="32" height="32"/>
   <object id="7" type="Hazard" gid="2" x="256" y="640" width="32" height="32"/>
+  <object id="10" type="Moving Hazard" gid="2" x="352" y="544" width="32" height="32">
+   <properties>
+    <property name="direction" value="UP"/>
+    <property name="distance" type="int" value="3"/>
+    <property name="speed" type="float" value="0.7"/>
+   </properties>
+  </object>
+  <object id="11" type="Moving Tile" gid="2" x="224" y="480" width="32" height="32">
+   <properties>
+    <property name="direction" value="LEFT"/>
+    <property name="distance" type="int" value="3"/>
+    <property name="speed" type="float" value="0.5"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer id="2" name="Foreground" width="64" height="24">
   <data encoding="csv">

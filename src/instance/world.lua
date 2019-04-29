@@ -12,6 +12,7 @@ local state_manager = _systems.state_manager()
 local upgrades = _systems.upgrades()
 local damage = _systems.damage()
 local levitation = _systems.levitation()
+local patrol = _systems.patrol()
 
 -- ADD SYSTEMS
 
@@ -25,6 +26,7 @@ world:addSystem(sprite_renderer, "spriteStateUpdated")
 
 world:addSystem(collider, "draw")
 world:addSystem(collider, "update")
+world:addSystem(collider, "updateHitbox")
 
 world:addSystem(walking, "update")
 
@@ -52,6 +54,8 @@ world:addSystem(damage, "update")
 
 world:addSystem(levitation, "update")
 
+world:addSystem(patrol, "update")
+
 -- ENABLE SYSTEMS
 
 world:enableSystem(jumping, "playerIdling")
@@ -62,6 +66,7 @@ world:enableSystem(sprite_renderer, "draw")
 world:enableSystem(sprite_renderer, "spriteStateUpdated")
 
 world:enableSystem(collider, "draw")
+world:enableSystem(collider, "updateHitbox")
 
 world:enableSystem(camera, "attach")
 world:enableSystem(camera, "detach")
@@ -86,6 +91,7 @@ function world:enableUpdates()
     world:enableSystem(sprite_renderer, "update")
     world:enableSystem(damage, "update")
     world:enableSystem(levitation, "update")
+    world:enableSystem(patrol, "update")
 end
 
 function world:disableUpdates()
@@ -101,6 +107,7 @@ function world:disableUpdates()
     world:disableSystem(sprite_renderer, "update")
     world:disableSystem(damage, "update")
     world:disableSystem(levitation, "update")
+    world:disableSystem(patrol, "update")
 end
 
 world:enableUpdates()

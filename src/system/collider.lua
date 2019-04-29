@@ -149,7 +149,7 @@ function collider:update(dt)
                     transform.pos.x + collides.width * 0.2,
                     transform.pos.y - 5,
                     collides.width * 0.6,
-                    1,
+                    0.05,
                     ignore_non_rigid_bodies_filter
                 )
                 if len2 > 0 then
@@ -163,7 +163,7 @@ function collider:update(dt)
                 transform.pos.x + collides.width * 0.035,
                 transform.pos.y + collides.height,
                 collides.width * 0.93,
-                0.5,
+                0.05,
                 ignore_non_rigid_bodies_filter
             )
             if len == 0 then
@@ -183,6 +183,31 @@ function collider:draw()
             love.graphics.rectangle("line", self.collision_world:getRect(items[i]))
         end
         Util.l.resetColour()
+    end
+end
+
+function collider:updateHitbox(e)
+    if e:has(_components.damage) then
+        -- dont care about the result, update will handle that
+        local transform = e:get(_components.transform)
+        self.collision_world:move(
+            e:get(_components.damage),
+            transform.pos.x,
+            transform.pos.y,
+            function(item, other)
+                return "cross" -- no collision resolution thnx
+            end
+        )
+    elseif e:has(_components.collides) then
+        local transform = e:get(_components.transform)
+        self.collision_world:move(
+            e:get(_components.collides),
+            transform.pos.x,
+            transform.pos.y,
+            function(item, other)
+                return "cross" -- no collision resolution thnx
+            end
+        )
     end
 end
 

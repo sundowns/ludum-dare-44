@@ -13,5 +13,6 @@ return {
     state_manager = require(PATH .. ".state_manager"),
     upgrades = require(PATH .. ".upgrades"),
     damage = require(PATH .. ".damage"),
-    levitation = require(PATH .. ".levitation")
+    levitation = require(PATH .. ".levitation"),
+    patrol = require(PATH .. ".patrol")
 }

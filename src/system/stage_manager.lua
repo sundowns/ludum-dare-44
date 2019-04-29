@@ -32,6 +32,36 @@ function stage_manager:stageLoaded(path)
                 self:getInstance():addEntity(_entities.goal(object.x, object.y))
             elseif object.type == "Hazard" then
                 self:getInstance():addEntity(_entities.hazard(object.x, object.y))
+            elseif object.type == "Moving Hazard" then
+                assert(object.properties, "moving hazard missing properties definition")
+                assert(object.properties.distance, "moving hazard missing distance property")
+                assert(object.properties.direction, "moving hazard missing direction property")
+                assert(object.properties.speed, "moving hazard missing direction speed")
+
+                self:getInstance():addEntity(
+                    _entities.moving_hazard(
+                        object.x,
+                        object.y,
+                        object.properties.direction,
+                        object.properties.distance,
+                        object.properties.speed
+                    )
+                )
+            elseif object.type == "Moving Tile" then
+                assert(object.properties, "moving tile missing properties definition")
+                assert(object.properties.distance, "moving tile missing distance property")
+                assert(object.properties.direction, "moving tile missing direction property")
+                assert(object.properties.speed, "moving tile missing direction speed")
+
+                self:getInstance():addEntity(
+                    _entities.moving_tile(
+                        object.x,
+                        object.y,
+                        object.properties.direction,
+                        object.properties.distance,
+                        object.properties.speed
+                    )
+                )
             end
         end
     end
@@ -82,7 +112,8 @@ function stage_manager:readObjectLayerData(objectLayer)
             {
                 type = object.type,
                 x = object.x,
-                y = object.y - 1 * _constants.CELL_HEIGHT
+                y = object.y - 1 * _constants.CELL_HEIGHT,
+                properties = object.properties or {}
             }
         )
     end
