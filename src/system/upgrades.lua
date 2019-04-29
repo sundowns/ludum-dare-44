@@ -120,6 +120,22 @@ function upgrades:draw_ui()
             love.graphics.getWidth() / 2 - self.hovered_upgrade.friendly_name:getWidth() / 2,
             love.graphics.getHeight() / 3
         )
+        love.graphics.setColor(1, 0, 0, 0.8)
+        local buffer = 20
+        for i = 1, self.hovered_upgrade.health_cost do
+            love.graphics.draw(
+                assets.tileset,
+                self.heart_quad,
+                love.graphics.getWidth() / 2 - ((_constants.CELL_WIDTH + buffer) * self.hovered_upgrade.health_cost) / 2 +
+                    ((_constants.CELL_WIDTH + buffer) * (i - 1)),
+                love.graphics.getHeight() / 3 + self.hovered_upgrade.friendly_name:getHeight() * 1.25,
+                0,
+                2,
+                2
+            )
+        end
+
+        Util.l.resetColour()
         self.hovered_upgrade = nil
     end
 

@@ -1,11 +1,11 @@
--- x and y are grid coordinates
+-- x and y are world coordinates (float)
 return function(x, y)
     local player =
-        Entity():give(
-        _components.transform,
-        Vector(x * _constants.CELL_WIDTH, y * _constants.CELL_HEIGHT),
-        Vector(0, 0)
-    ):give(_components.collides, _constants.PLAYER_WIDTH, _constants.PLAYER_HEIGHT):give(
+        Entity():give(_components.transform, Vector(x, y), Vector(0, 0)):give(
+        _components.collides,
+        _constants.PLAYER_WIDTH,
+        _constants.PLAYER_HEIGHT
+    ):give(
         _components.walk,
         {
             left = "a",

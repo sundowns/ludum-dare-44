@@ -6,7 +6,7 @@ local DIRECTIONS = {
 local direction =
     Component(
     function(e)
-        e.value = DIRECTIONS.right
+        e.value = DIRECTIONS.left
     end
 )
 

@@ -62,11 +62,11 @@ function stage_manager:stageLoaded(path)
                         object.properties.speed
                     )
                 )
+            elseif object.type == "Spawn" then
+                self:getInstance():addEntity(_entities.player(object.x, object.y))
             end
         end
     end
-
-    self:getInstance():addEntity(_entities.player(2, 18))
 end
 
 function stage_manager:draw()

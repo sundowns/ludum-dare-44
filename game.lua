@@ -53,7 +53,7 @@ function game:init()
     _systems = require("src.system")
     _instances = require("src.instance")
 
-    _instances.world:emit("stageLoaded", "resource/test2.lua")
+    _instances.world:emit("stageLoaded", "resource/realdeal.lua")
 end
 
 function game:update(dt)
