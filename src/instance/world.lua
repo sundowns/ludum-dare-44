@@ -36,6 +36,7 @@ world:addSystem(jumping, "playerIdling")
 world:addSystem(physics, "update")
 
 world:addSystem(camera, "update")
+world:addSystem(camera, "shake")
 world:addSystem(camera, "attach")
 world:addSystem(camera, "detach")
 
@@ -64,6 +65,7 @@ world:enableSystem(collider, "draw")
 
 world:enableSystem(camera, "attach")
 world:enableSystem(camera, "detach")
+world:enableSystem(camera, "shake")
 
 world:enableSystem(upgrades, "acquireUpgrade")
 world:enableSystem(upgrades, "upgradeHovered")

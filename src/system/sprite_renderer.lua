@@ -49,7 +49,6 @@ function sprite_renderer:handle_invulnerability(e)
     else
         love.graphics.setColor(1, 1, 1, 1)
     end
-    -- meant to flash white/normal
 end
 
 function sprite_renderer:loadSpriteSheet(spriteName)

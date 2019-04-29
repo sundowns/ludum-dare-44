@@ -5,6 +5,23 @@ function upgrades:init()
     self.show_too_expensive_warning = false
     self.too_expensive_text = love.graphics.newText(_fonts.WARNING, "Not enough hearts </3")
     self.tooltip_timer = Timer.new()
+    self.heart_quad =
+        love.graphics.newQuad(
+        _constants.CELL_WIDTH,
+        _constants.CELL_HEIGHT * 2.5,
+        _constants.CELL_WIDTH / 2,
+        _constants.CELL_HEIGHT / 2,
+        assets.tileset:getDimensions()
+    )
+
+    self.health_flashing_timer = Timer.new()
+    self.health_flashing_timer:every(
+        _constants.HEART_LOSS_FLASH_INTERVAL,
+        function()
+            self.heart_is_flashing = not self.heart_is_flashing
+        end
+    )
+    self.heart_is_flashing = false
 end
 
 function upgrades:acquireUpgrade(powerup)
@@ -27,6 +44,18 @@ function upgrades:acquireUpgrade(powerup)
             break
         else
             powerup_was_consumed = true
+
+            self:getInstance():emit("shake", 0.4, 1.5)
+
+            if upgrade.health_cost > 0 then
+                e:give(_components.hurt):apply()
+                self.health_flashing_timer:after(
+                    _constants.INVULNERABILITY_DURATION,
+                    function()
+                        e:remove(_components.hurt):apply()
+                    end
+                )
+            end
         end
 
         health:reduce(upgrade.health_cost)
@@ -80,6 +109,7 @@ end
 
 function upgrades:update(dt)
     self.tooltip_timer:update(dt)
+    self.health_flashing_timer:update(dt)
 end
 
 function upgrades:draw_ui()
@@ -108,10 +138,27 @@ function upgrades:draw_ui()
     for i = 1, self.pool.size do
         local e = self.pool:get(i)
         local health = e:get(_components.health)
+        love.graphics.push()
+        love.graphics.scale(1.75, 1.75)
+
+        self:handle_flashing(e)
         for i = 1, health.current do
-            -- TODO: replace with pretty hearts or something
-            love.graphics.print(i, 20 + (i * 20), 20)
+            love.graphics.draw(assets.tileset, self.heart_quad, 16 + (i * 20), 16)
         end
+        Util.l.resetColour()
+        love.graphics.pop()
+    end
+end
+
+function upgrades:handle_flashing(e)
+    if e:has(_components.hurt) then
+        if self.heart_is_flashing then
+            love.graphics.setColor(1, 0, 0, 1)
+        else
+            love.graphics.setColor(1, 1, 1, 1)
+        end
+    else
+        love.graphics.setColor(1, 1, 1, 1)
     end
 end
 

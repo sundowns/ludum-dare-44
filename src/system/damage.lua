@@ -7,17 +7,18 @@ function damage:playerTouchedHazard(damage)
         if not e:has(_components.invulnerability) then
             local health = e:get(_components.health)
 
+            self:getInstance():emit("shake", 0.6, 1.5)
             health.current = health.current - damage
             if health.current < 1 then
                 print("ur dead idiot") -- TODO: proper end/defeat state
             end
 
-            e:give(_components.invulnerability):apply()
+            e:give(_components.invulnerability):give(_components.hurt):apply()
             local invulnerability = e:get(_components.invulnerability)
             invulnerability.timer:after(
                 invulnerability.duration,
                 function()
-                    e:remove(_components.invulnerability):apply()
+                    e:remove(_components.invulnerability):remove(_components.hurt):apply()
                 end
             )
         end
