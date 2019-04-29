@@ -78,6 +78,13 @@ function upgrades:acquireUpgrade(powerup)
                 },
                 true
             ):apply()
+        elseif upgrade.type == "AIR_DASH" then
+            e:give(
+                _components.air_dash,
+                {
+                    dash = "lshift"
+                }
+            ):apply()
         elseif upgrade.type == "SPEED" then
             e:remove(_components.walk):remove(_components.air_control):apply()
 

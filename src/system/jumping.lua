@@ -77,11 +77,4 @@ function jumping:update(dt)
     end
 end
 
-function jumping:playerIdling()
-    for i = 1, self.JUMPERS.size do
-        local e = self.JUMPERS:get(i)
-        e:get(_components.jump):reset()
-    end
-end
-
 return jumping

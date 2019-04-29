@@ -18,5 +18,6 @@ return {
     invulnerability = require(PATH .. ".invulnerability"),
     levitating = require(PATH .. ".levitating"),
     patrolling = require(PATH .. ".patrolling"),
-    hurt = require(PATH .. ".hurt")
+    hurt = require(PATH .. ".hurt"),
+    air_dash = require(PATH .. ".air_dash")
 }

@@ -5,7 +5,7 @@ return function(x, y)
         _components.collectible,
         "SPEED",
         "Speed Boost",
-        3
+        _constants.COST_SPEED_BOOST
     ):give(_components.sprite, "UPGRADE_SPEED", 0, 1, 1, 0, -8):give(_components.levitating):apply()
     return upgrade_speed
 end

@@ -5,7 +5,7 @@ return function(x, y)
         _components.collectible,
         "JUMP",
         "Jump",
-        1
+        _constants.COST_JUMP
     ):give(_components.sprite, "UPGRADE_JUMP", 0, 1, 1, 0, -8):give(_components.levitating):apply()
     return upgrade_jump
 end

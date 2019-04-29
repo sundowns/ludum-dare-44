@@ -4,7 +4,7 @@ assert(anim8)
 return {
     id = "UPGRADE_JUMP",
     image = assets.powerups,
-    grid = anim8.newGrid(32, 32, assets.player:getWidth(), assets.player:getHeight()),
+    grid = anim8.newGrid(32, 32, assets.powerups:getWidth(), assets.powerups:getHeight()),
     animation_names = {
         "default"
     },

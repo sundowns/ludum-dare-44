@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 11,
-  nextobjectid = 20,
+  nextobjectid = 21,
   properties = {},
   tilesets = {
     {
@@ -374,6 +374,20 @@ return {
           height = 32,
           rotation = 0,
           gid = 270,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 20,
+          name = "",
+          type = "Air Dash",
+          shape = "rectangle",
+          x = 1824,
+          y = 512,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 271,
           visible = true,
           properties = {}
         }

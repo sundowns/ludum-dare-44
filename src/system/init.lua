@@ -14,5 +14,6 @@ return {
     upgrades = require(PATH .. ".upgrades"),
     damage = require(PATH .. ".damage"),
     levitation = require(PATH .. ".levitation"),
-    patrol = require(PATH .. ".patrol")
+    patrol = require(PATH .. ".patrol"),
+    air_dash = require(PATH .. ".air_dash")
 }

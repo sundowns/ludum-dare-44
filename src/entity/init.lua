@@ -10,5 +10,6 @@ return {
     hazard = require(PATH .. ".hazard"),
     moving_hazard = require(PATH .. ".moving_hazard"),
     moving_tile = require(PATH .. ".moving_tile"),
-    heart = require(PATH .. ".heart")
+    heart = require(PATH .. ".heart"),
+    upgrade_air_dash = require(PATH .. ".upgrade_air_dash")
 }

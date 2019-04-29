@@ -11,4 +11,16 @@ function state_manager:update(dt)
     end
 end
 
+function state_manager:resetAirAbilities()
+    for i = 1, self.pool.size do
+        local e = self.pool:get(i)
+        if e:has(_components.jump) then
+            e:get(_components.jump):reset()
+        end
+        if e:has(_components.air_dash) then
+            e:get(_components.air_dash):reset()
+        end
+    end
+end
+
 return state_manager

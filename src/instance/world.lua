@@ -13,6 +13,7 @@ local upgrades = _systems.upgrades()
 local damage = _systems.damage()
 local levitation = _systems.levitation()
 local patrol = _systems.patrol()
+local air_dash = _systems.air_dash()
 
 -- ADD SYSTEMS
 
@@ -33,7 +34,6 @@ world:addSystem(walking, "update")
 world:addSystem(gravity, "update")
 
 world:addSystem(jumping, "update")
-world:addSystem(jumping, "playerIdling")
 
 world:addSystem(physics, "update")
 
@@ -43,6 +43,7 @@ world:addSystem(camera, "attach")
 world:addSystem(camera, "detach")
 
 world:addSystem(state_manager, "update")
+world:addSystem(state_manager, "resetAirAbilities")
 
 world:addSystem(upgrades, "acquireUpgrade")
 world:addSystem(upgrades, "upgradeHovered")
@@ -56,11 +57,12 @@ world:addSystem(levitation, "update")
 
 world:addSystem(patrol, "update")
 
+world:addSystem(air_dash, "update")
+
 -- ENABLE SYSTEMS
 
-world:enableSystem(jumping, "playerIdling")
-
 world:enableSystem(stage_manager, "stageLoaded")
+world:enableSystem(state_manager, "resetAirAbilities")
 
 world:enableSystem(sprite_renderer, "draw")
 world:enableSystem(sprite_renderer, "spriteStateUpdated")
@@ -92,6 +94,7 @@ function world:enableUpdates()
     world:enableSystem(damage, "update")
     world:enableSystem(levitation, "update")
     world:enableSystem(patrol, "update")
+    world:enableSystem(air_dash, "update")
 end
 
 function world:disableUpdates()
@@ -108,6 +111,7 @@ function world:disableUpdates()
     world:disableSystem(damage, "update")
     world:disableSystem(levitation, "update")
     world:disableSystem(patrol, "update")
+    world:disableSystem(air_dash, "update")
 end
 
 world:enableUpdates()

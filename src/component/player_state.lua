@@ -3,13 +3,16 @@ local states = {
         {
             duration = 1,
             action = function()
-                _instances.world:emit("playerIdling")
+                _instances.world:emit("resetAirAbilities")
             end
         }
     },
     walk = {
         {
-            duration = 1
+            duration = 1,
+            action = function()
+                _instances.world:emit("resetAirAbilities")
+            end
         }
     },
     jump = {

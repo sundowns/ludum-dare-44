@@ -5,7 +5,7 @@ return function(x, y)
         _components.collectible,
         "DOUBLE_JUMP",
         "Double Jump",
-        3
+        _constants.COST_DOUBLE_JUMP
     ):give(_components.sprite, "UPGRADE_DOUBLE_JUMP", 0, 1, 1, 0, -8):give(_components.levitating):apply()
     return upgrade_double_jump
 end
