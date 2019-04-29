@@ -160,7 +160,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="Collectibles">
-  <object id="1" type="Spawn" gid="259" x="896" y="1024" width="32" height="32"/>
+  <object id="1" type="Spawn" gid="259" x="864" y="992" width="32" height="32"/>
   <object id="2" type="Jump" gid="259" x="672" y="1024" width="32" height="32"/>
   <object id="8" type="Hazard" gid="269" x="768" y="768" width="32" height="32"/>
   <object id="9" type="Hazard" gid="269" x="800" y="768" width="32" height="32"/>

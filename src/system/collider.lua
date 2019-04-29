@@ -68,8 +68,8 @@ function collider:update(dt)
         local actualX, actualY, cols, len =
             self.collision_world:move(
             collides,
-            transform.pos.x,
-            transform.pos.y,
+            transform.pos.x + collides.offset.x,
+            transform.pos.y + collides.offset.y,
             function(item, other)
                 if other.collectible or other.hazard then
                     return "cross"
@@ -78,7 +78,7 @@ function collider:update(dt)
                 end
             end
         )
-        transform:setPosition(Vector(actualX, actualY))
+        transform:setPosition(Vector(actualX - collides.offset.x, actualY - collides.offset.y))
 
         -- check for collision with hazards
         local items, len =
@@ -136,8 +136,8 @@ function collider:update(dt)
             -- query to see if player is on the ground
             local items, len =
                 self.collision_world:queryRect(
-                transform.pos.x + collides.width * 0.035,
-                transform.pos.y + collides.height,
+                transform.pos.x + collides.offset.x + collides.width * 0.035,
+                transform.pos.y + collides.offset.y + collides.height,
                 collides.width * 0.93,
                 0.05,
                 ignore_non_rigid_bodies_filter
@@ -149,8 +149,8 @@ function collider:update(dt)
                 -- query to see if player has bumped their head
                 local items2, len2 =
                     self.collision_world:queryRect(
-                    transform.pos.x + collides.width * 0.2,
-                    transform.pos.y - 5,
+                    transform.pos.x + collides.offset.x + collides.width * 0.2,
+                    transform.pos.y + collides.offset.y - 5,
                     collides.width * 0.6,
                     0.05,
                     ignore_non_rigid_bodies_filter
@@ -163,8 +163,8 @@ function collider:update(dt)
             -- query to see if player is on the ground
             local items, len =
                 self.collision_world:queryRect(
-                transform.pos.x + collides.width * 0.035,
-                transform.pos.y + collides.height,
+                transform.pos.x + collides.offset.x + collides.width * 0.035,
+                transform.pos.y + collides.offset.y + collides.height,
                 collides.width * 0.93,
                 0.05,
                 ignore_non_rigid_bodies_filter
@@ -189,6 +189,7 @@ function collider:draw()
     end
 end
 
+-- Used to moving tiles & hazards (only hazards are used)
 function collider:updateHitbox(e)
     if e:has(_components.damage) then
         -- dont care about the result, update will handle that

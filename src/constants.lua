@@ -1,8 +1,8 @@
 return {
     CELL_HEIGHT = 32,
     CELL_WIDTH = 32,
-    PLAYER_HEIGHT = 24,
-    PLAYER_WIDTH = 32,
+    PLAYER_HEIGHT = 18,
+    PLAYER_WIDTH = 22,
     GRAVITY = 250,
     JUMP_DECAY = 600,
     JUMP_ACCEL = 535,

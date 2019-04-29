@@ -1,7 +1,7 @@
 game = {}
 
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";lib/?.lua;lib/;")
-_debug = false
+_debug = true -- TODO: make false (and remove toggle entirely)
 _constants = nil
 _components = nil
 _entities = nil

@@ -5,7 +5,8 @@ return function(x, y)
         _components.collides,
         _constants.PLAYER_WIDTH,
         _constants.PLAYER_HEIGHT,
-        true
+        true,
+        Vector(5, 0) -- offset relative to transform
     ):give(
         _components.walk,
         {
