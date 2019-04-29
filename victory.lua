@@ -30,5 +30,7 @@ function victory:keypressed(key)
         if loadTimer > MINIMUM_TIME then
             love.event.quit()
         end
+    elseif key == "space" then
+        love.event.quit("restart")
     end
 end
