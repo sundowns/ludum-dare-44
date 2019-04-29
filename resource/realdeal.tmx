@@ -353,8 +353,8 @@
   <object id="78" type="Moving Hazard" gid="260" x="4736" y="384" width="32" height="32">
    <properties>
     <property name="direction" value="LEFT"/>
-    <property name="distance" type="int" value="12"/>
-    <property name="speed" type="float" value="1.1"/>
+    <property name="distance" type="int" value="11"/>
+    <property name="speed" type="float" value="1"/>
    </properties>
   </object>
   <object id="79" type="Goal" gid="271" x="5312" y="640" width="32" height="32"/>

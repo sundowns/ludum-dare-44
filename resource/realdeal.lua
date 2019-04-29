@@ -1292,8 +1292,8 @@ return {
           visible = true,
           properties = {
             ["direction"] = "LEFT",
-            ["distance"] = 12,
-            ["speed"] = 1.1
+            ["distance"] = 11,
+            ["speed"] = 1
           }
         },
         {
